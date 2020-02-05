@@ -1,0 +1,68 @@
+%table.pokemon__table
+  %tr
+    %th 
+    %th 種族値
+    %th 個体値
+    %th 努力値
+    %th 実数値
+
+  %tr
+    %td HP
+    %td
+      = pokemon.hp
+    %td
+      = status[:hp_iv]
+    %td
+      = status[:hp_ev]
+    %td
+      = status[:hp_value]
+  %tr
+    %td.pokemon__table--label 攻撃
+    %td
+      = pokemon.attack
+    %td
+      = status[:attack_iv]
+    %td
+      = status[:attack_ev]
+    %td
+      = status[:attack_value]
+  %tr
+    %td.pokemon__table--label 防御
+    %td
+      = pokemon.defence
+    %td
+      = status[:defence_iv]
+    %td
+      = status[:defence_ev]
+    %td
+      = status[:defence_value]
+  %tr
+    %td.pokemon__table--label 特攻
+    %td
+      = pokemon.sp_atk
+    %td
+      = status[:sp_atk_iv]
+    %td
+      = status[:sp_atk_ev]
+    %td
+      = status[:sp_atk_value]
+  %tr
+    %td.pokemon__table--label 特防
+    %td
+      = pokemon.sp_def
+    %td
+      = status[:sp_def_iv]
+    %td
+      = status[:sp_def_ev]
+    %td
+      = status[:sp_def_value]
+  %tr
+    %td.pokemon__table--label 素早
+    %td
+      = pokemon.speed
+    %td
+      = status[:speed_iv]
+    %td
+      = status[:speed_ev]
+    %td
+      = status[:speed_value]

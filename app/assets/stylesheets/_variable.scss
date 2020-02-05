@@ -1,0 +1,15 @@
+$bg-title: #39f;
+$bg-middle: #cff;
+$bg-middle2: #9ff;
+$bg-left: #36f;
+$bg-right: #f36;
+$bg-center: lightgreen;
+
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}

@@ -1,0 +1,12 @@
+.middle {
+  &__background {
+    width: 100ww;
+    margin: 0 auto;
+    @include clearfix;
+  }
+  &__contents {
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+  }
+}
