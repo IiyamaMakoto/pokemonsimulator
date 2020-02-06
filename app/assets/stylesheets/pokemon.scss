@@ -12,14 +12,25 @@
   &__search_box {
     float: left;
     display: block;
+    position: relative;
   }
   &__search {
     height: 30px;
-    width: 200px;
+    width: 170px;
     margin-top: 5px;
   }
+  &__search_result {
+    position: absolute;
+    top: 35px;
+  }
+  &__result {
+    color: black;
+    background-color: white;
+    border: 1px solid lightblue;
+    width: 170px;
+  }
   &__type_box {
-    float: left;
+    float: right;
     height: 30px;
     margin: 5px;
     @include clearfix;
@@ -120,12 +131,13 @@
     &--18 {
       @extend .pokemon__type;
       color: black;
+      letter-spacing: -0.5em;
       background-color: #f8b0d0;
     }
   }
   &__level_box {
-    float: left;
-    margin: 5px;
+    float: right;
+    margin: 5px 10px 5px 5px;
   }
   &__level {
     width: 40px;
@@ -153,6 +165,7 @@
     }
     &--label {
       font-size: 0.8em;
+      font-weight: bold;
     }
   }
   &__form {
