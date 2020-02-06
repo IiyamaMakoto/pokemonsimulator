@@ -1,6 +1,6 @@
 class Nature < ActiveHash::Base
   self.data = [
-    {id: 11, name: "がんばりや"},
+    {id: 11, name: "まじめ"},
     {id: 12, name: "さみしがり"},
     {id: 13, name: "いじっぱり"},
     {id: 14, name: "やんちゃ"},
@@ -24,6 +24,6 @@ class Nature < ActiveHash::Base
     {id: 52, name: "せっかち"},
     {id: 53, name: "ようき"},
     {id: 54, name: "むじゃき"},
-    {id: 55, name: "まじめ"},
+    {id: 55, name: "がんばりや"},
   ]
 end
