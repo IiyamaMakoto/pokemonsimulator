@@ -1,27 +1,25 @@
-%div{class: "#{side}"}
-  %div{class: "pokemon"}
-    .pokemon__header
-      .pokemon__search_box
-        = form_with url: search_calc_index_path, method: :get do |f|
-          = f.text_field "search_#{side}", placeholder: "ポケモンの名前を入力", class: "pokemon__search"
-        .pokemon__search_result{id: "search_list_#{side}"}
-      .pokemon__level_box
-        Lv.
-        = text_field_tag "level_#{side}", status[:level], class: "pokemon__level"
-      .pokemon__type_box
-        %div{class: "pokemon__type--14"}
-          ゴースト
-        %div{class: "pokemon__type--18"}
-          フェアリー
+%div{class: "pokemon"}
+  .pokemon__header
+    .pokemon__name
+      = pokemon.name
+    .pokemon__image
+    .pokemon__level_box
+      Lv.
+      = text_field_tag "level_#{side}", status[:level], class: "pokemon__level"
+    .pokemon__type_box
+      %div{class: "pokemon__type--14"}
+        ゴースト
+      %div{class: "pokemon__type--18"}
+        フェアリー
 
-    .pokemon__middle
-      = render partial: "table" ,locals: {pokemon: pokemon, status: status}
-      .pokemon__form
-        性別
-        = select_tag :gender, options_for_select([['不明', ''], ['♂', '1'], ['♀', '2']]), {class: "pokemon__select"}
-      .pokemon__form
-        性格
-        = collection_select :status, :nature, @natures, :id, :name, {selected: status[:nature_id]}, {class: "pokemon__select"}
-      .pokemon__form
-        特性
-        -# = collection_select :status, :ability, @abilities, :id, :name, {class: "pokemon__select"}
+  .pokemon__middle
+    = render partial: "table" ,locals: {pokemon: pokemon, status: status}
+    .pokemon__form
+      性別
+      = select_tag :gender, options_for_select([['不明', ''], ['♂', '1'], ['♀', '2']]), {class: "pokemon__select"}
+    .pokemon__form
+      性格
+      = collection_select :status, :nature, @natures, :id, :name, {selected: status[:nature_id]}, {class: "pokemon__select"}
+    .pokemon__form
+      特性
+      -# = collection_select :status, :ability, @abilities, :id, :name, {class: "pokemon__select"}
