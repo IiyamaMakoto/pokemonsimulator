@@ -28,6 +28,8 @@
     background-color: white;
     border: 1px solid lightblue;
     width: 170px;
+    &_left {@extend .pokemon__result};
+    &_right {@extend .pokemon__result};
   }
   &__type_box {
     float: right;

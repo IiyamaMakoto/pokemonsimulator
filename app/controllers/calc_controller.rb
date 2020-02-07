@@ -15,8 +15,6 @@ class CalcController < ApplicationController
     keyword = params[:keyword]
     return nil if keyword == ""
     @pokemons = Pokemon.where(['name LIKE ?', "%#{keyword.tr('ぁ-ん','ァ-ン')}%"]).order(:name)
-    # @pokemon = Pokemon.find_by(name: keyword)
-    # @pokemon = "キテルグマ"
     respond_to do |format|
       format.json
     end

@@ -4,7 +4,7 @@
       .pokemon__search_box
         = form_with url: search_calc_index_path, method: :get do |f|
           = f.text_field "search_#{side}", placeholder: "ポケモンの名前を入力", class: "pokemon__search"
-        .search_result{id: "search_list_#{side}"}
+        .pokemon__search_result{id: "search_list_#{side}"}
       .pokemon__level_box
         Lv.
         = text_field_tag "level_#{side}", status[:level], class: "pokemon__level"
