@@ -1,0 +1,7 @@
+%div{class: "#{side}"}
+  .pokemon__search_box
+    = form_with url: search_calc_index_path, method: :get do |f|
+      = f.text_field "search_#{side}", placeholder: "ここからポケモンの名前を検索", class: "pokemon__search"
+    .pokemon__search_result{id: "search_list_#{side}"}
+  %div{id: "pokemon_#{side}"}
+    = render partial: "pokemon", locals: {pokemon: pokemon, side: side, status: status}

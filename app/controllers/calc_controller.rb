@@ -1,14 +1,22 @@
 class CalcController < ApplicationController
   extend ActiveHash::Associations::ActiveRecordExtensions
+  before_action :set_natures
 
   def index
     @pokemon_left = Pokemon.find_by_name "ミミッキュ"
-    @status_left = default_status
-    status_calc(@pokemon_left, @status_left)
+    left_status_setting
     @pokemon_right = Pokemon.find_by_name "ドリュウズ"
-    @status_right = default_status
-    status_calc(@pokemon_right, @status_right)
-    @natures = Nature.all
+    right_status_setting
+  end
+
+  def set_left
+    @pokemon_left = Pokemon.find(params[:id])
+    left_status_setting
+  end
+
+  def set_right
+    @pokemon_right = Pokemon.find(params[:id])
+    right_status_setting
   end
 
   def search
@@ -21,6 +29,10 @@ class CalcController < ApplicationController
   end
 
   private
+
+  def set_natures
+    @natures = Nature.all
+  end
 
   def default_status
     {level: 50,
@@ -52,5 +64,15 @@ class CalcController < ApplicationController
     status[:speed_value] = (((status[:speed_ev]*0.25)+pokemon.speed*2+status[:speed_iv])/100*status[:level]+5).floor
     status[:speed_value] = (status[:speed_value]*1.1).floor if status[:nature_id]/10.floor == 5 && status[:nature_id]%10 != 5
     status[:speed_value] = (status[:speed_value]*0.9).floor if status[:nature_id]/10.floor != 5 && status[:nature_id]%10 == 5
+  end
+
+  def left_status_setting
+    @status_left = default_status
+    status_calc(@pokemon_left, @status_left)
+  end
+
+  def right_status_setting
+    @status_right = default_status
+    status_calc(@pokemon_right, @status_right)
   end
 end

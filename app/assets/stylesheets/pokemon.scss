@@ -1,8 +1,8 @@
 .pokemon {
-  margin: 20px 3px 3px 3px;
+  margin: 30px 3px 3px 3px;
   border-radius: 5px;
   background-color: white;
-  height: 437px;
+  height: 427px;
   &__header {
     width: 100%;
     height: 40px;
@@ -15,21 +15,36 @@
     position: relative;
   }
   &__search {
-    height: 30px;
-    width: 170px;
-    margin-top: 5px;
+    font-size: 12px;
+    height: 20px;
+    width: 200px;
+    margin: 5px 0 0 5px;
+    padding-left: 3px;
   }
   &__search_result {
     position: absolute;
-    top: 35px;
+    top: 25px;
+    left: 5px;
   }
   &__result {
     color: black;
     background-color: white;
     border: 1px solid lightblue;
     width: 170px;
+    display: block;
+    padding-left: 3px;
+    text-decoration: none;
     &_left {@extend .pokemon__result};
     &_right {@extend .pokemon__result};
+  }
+  &__name {
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+    width: 170px;
+    margin-top: 5px;
+    padding-left: 3px;
   }
   &__type_box {
     float: right;
@@ -180,5 +195,12 @@
     font-size: 14px;
     height: 25px;
     margin: 5px 0;
+  }
+  &__image {
+    height: 30px;
+    width: 30px;
+    background-color: orange;
+    float: left;
+    margin: 5px;
   }
 }

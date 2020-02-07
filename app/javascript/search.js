@@ -11,7 +11,7 @@ $(function() {
     .done(function(pokemons) {
       $(target).empty();
       pokemons.forEach(function(pokemon){
-        var HTML = `<div class="pokemon__result_${side}" data-id="${pokemon.id}">${pokemon.name}</div>`
+        var HTML = `<a href="/calc/${pokemon.id}/set_${side}" class="pokemon__result_${side}" data-id="${pokemon.id}", data-remote="true" rel="nofollow" data-method="get">${pokemon.name}</a>`
         $(target).append(HTML);
       });
     })
