@@ -1,5 +1,4 @@
 class Pokemon < ApplicationRecord
-  include ActiveHash::Associations
-  has_many :types, throuth: :pokemon_types
   has_many :pokemon_types
+  has_many :types, through: :pokemon_types
 end

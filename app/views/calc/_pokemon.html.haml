@@ -7,10 +7,11 @@
       Lv.
       = text_field_tag "level_#{side}", status[:level], class: "pokemon__level"
     .pokemon__type_box
-      %div{class: "pokemon__type--14"}
-        ゴースト
-      %div{class: "pokemon__type--18"}
-        フェアリー
+      %div{class: "pokemon__type--#{pokemon.types[0].id}"}
+        = pokemon.types[0].name
+      - if pokemon.types[1]
+        %div{class: "pokemon__type--#{pokemon.types[1].id}"}
+          = pokemon.types[1].name
 
   .pokemon__middle
     = render partial: "table" ,locals: {pokemon: pokemon, status: status}
