@@ -5,7 +5,7 @@
     .pokemon__image
     .pokemon__level_box
       Lv.
-      = text_field_tag "level_#{side}", status[:level], class: "pokemon__level"
+      = text_field_tag "level_#{side}", status.level, class: "pokemon__level"
     .pokemon__type_box
       - if pokemon.types[0]
         %div{class: "pokemon__type--#{pokemon.types[0].id}"}
@@ -15,18 +15,18 @@
           = pokemon.types[1].name
 
   .pokemon__middle
-    = render partial: "table" ,locals: {pokemon: pokemon, status: status}
+    = render partial: "table" ,locals: {pokemon: pokemon, side: side, status: status}
     .pokemon__form
       性別
       = select_tag :gender, options_for_select([['不明', ''], ['♂', '1'], ['♀', '2']]), {class: "pokemon__select"}
     .pokemon__form
       性格
-      = collection_select :status, :nature, @natures, :id, :name, {selected: status[:nature_id]}, {class: "pokemon__select"}
+      = collection_select :status, :nature, @natures, :id, :name, {selected: status.nature_id}, {class: "pokemon__select"}
     .pokemon__form
       特性
       -# = collection_select :status, :ability, @abilities, :id, :name, {class: "pokemon__select"}
-      = select_tag :ability
+      = select_tag :ability, {prompt: "---"}, {class: "pokemon__select"}
     .pokemon__form
       道具
       -# = collection_select :status, :item, @items, :id, :name, {class: "pokemon__select"}
-      = select_tag :item
+      = select_tag :item, {prompt: "---"}, {class: "pokemon__select"}

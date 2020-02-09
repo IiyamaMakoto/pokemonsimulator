@@ -1,68 +1,69 @@
-%table.table
-  %tr
-    %th 
-    %th 種族値
-    %th 個体値
-    %th 努力値
-    %th 実数値
+= form_with do |f|
+  %table{class: "table table_#{side}"}
+    %tr
+      %th 
+      %th 種族値
+      %th 個体値
+      %th 努力値
+      %th 実数値
 
-  %tr
-    %td HP
-    %td
-      = pokemon.hp
-    %td
-      = status[:hp_iv]
-    %td
-      = status[:hp_ev]
-    %td
-      = status[:hp_value]
-  %tr
-    %td.table__label 攻撃
-    %td
-      = pokemon.attack
-    %td
-      = status[:attack_iv]
-    %td
-      = status[:attack_ev]
-    %td
-      = status[:attack_value]
-  %tr
-    %td.table__label 防御
-    %td
-      = pokemon.defence
-    %td
-      = status[:defence_iv]
-    %td
-      = status[:defence_ev]
-    %td
-      = status[:defence_value]
-  %tr
-    %td.table__label 特攻
-    %td
-      = pokemon.sp_atk
-    %td
-      = status[:sp_atk_iv]
-    %td
-      = status[:sp_atk_ev]
-    %td
-      = status[:sp_atk_value]
-  %tr
-    %td.table__label 特防
-    %td
-      = pokemon.sp_def
-    %td
-      = status[:sp_def_iv]
-    %td
-      = status[:sp_def_ev]
-    %td
-      = status[:sp_def_value]
-  %tr
-    %td.table__label 素早
-    %td
-      = pokemon.speed
-    %td
-      = status[:speed_iv]
-    %td
-      = status[:speed_ev]
-    %td
-      = status[:speed_value]
+    %tr
+      %td HP
+      %td
+        = pokemon.hp
+      %td
+        = f.text_field :hp_iv, id: "hp_iv_#{side}", value: status.hp_iv, class: :table__text_field
+      %td
+        = f.text_field :hp_ev, id: "hp_ev_#{side}", value: status.hp_ev, class: :table__text_field
+      %td
+        = f.text_field :hp_value, id: "hp_value_#{side}", value: status.hp_value, class: :table__text_field
+    %tr
+      %td.table__label 攻撃
+      %td
+        = pokemon.attack
+      %td
+        = f.text_field :attack_iv, id: "attack_iv_#{side}", value: status.attack_iv, class: :table__text_field
+      %td
+        = f.text_field :attack_ev, id: "attack_ev_#{side}", value: status.attack_ev, class: :table__text_field
+      %td
+        = f.text_field :attack_value, id: "attack_value_#{side}", value: status.attack_value, class: :table__text_field
+    %tr
+      %td.table__label 防御
+      %td
+        = pokemon.defence
+      %td
+        = f.text_field :defence_iv, id: "defence_iv_#{side}", value: status.defence_iv, class: :table__text_field
+      %td
+        = f.text_field :defence_ev, id: "defence_ev_#{side}", value: status.defence_ev, class: :table__text_field
+      %td
+        = f.text_field :defence_value, id: "defence_value_#{side}", value: status.defence_value, class: :table__text_field
+    %tr
+      %td.table__label 特攻
+      %td
+        = pokemon.sp_atk
+      %td
+        = f.text_field :sp_atk_iv, id: "sp_atk_iv_#{side}", value: status.sp_atk_iv, class: :table__text_field
+      %td
+        = f.text_field :sp_atk_ev, id: "sp_atk_ev_#{side}", value: status.sp_atk_ev, class: :table__text_field
+      %td
+        = f.text_field :sp_atk_value, id: "sp_atk_value_#{side}", value: status.sp_atk_value, class: :table__text_field
+    %tr
+      %td.table__label 特防
+      %td
+        = pokemon.sp_def
+      %td
+        = f.text_field :sp_def_iv, id: "sp_def_iv_#{side}", value: status.sp_def_iv, class: :table__text_field
+      %td
+        = f.text_field :sp_def_ev, id: "sp_def_ev_#{side}", value: status.sp_def_ev, class: :table__text_field
+      %td
+        = f.text_field :sp_def_value, id: "sp_def_value_#{side}", value: status.sp_def_value, class: :table__text_field
+    %tr
+      %td.table__label 素早
+      %td
+        = pokemon.speed
+      %td
+        = f.text_field :speed_iv, id: "speed_iv_#{side}", value: status.speed_iv, class: :table__text_field
+      %td
+        = f.text_field :speed_ev, id: "speed_ev_#{side}", value: status.speed_ev, class: :table__text_field
+      %td
+        = f.text_field :speed_value, id: "speed_value_#{side}", value: status.speed_value, class: :table__text_field

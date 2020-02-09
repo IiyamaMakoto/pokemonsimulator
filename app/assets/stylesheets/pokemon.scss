@@ -199,6 +199,10 @@
     font-size: 14px;
     height: 25px;
     margin: 5px 0;
+    &--middle {
+      @extend .pokemon__select;
+      width: 130px;
+    }
   }
   &__image {
     height: 30px;

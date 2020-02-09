@@ -12,9 +12,17 @@
     color: white;
     font-size: 12px;
     background-color: $bg-left;
+    text-align: center;
   }
   &__label {
     font-size: 0.8em;
     font-weight: bold;
+  }
+  &__text_field {
+    width: 42px;
+    height: 20px;
+    border-style: none;
+    text-align: center;
+    outline: none;
   }
 }
