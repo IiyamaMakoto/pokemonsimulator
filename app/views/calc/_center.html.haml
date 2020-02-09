@@ -1,4 +1,4 @@
 .center
   天候
   %br
-  = select_tag :weather
+  = collection_select :status, :weather, @weathers, :id, :name, {prompt: "---"}, {class: "pokemon__select--middle"}

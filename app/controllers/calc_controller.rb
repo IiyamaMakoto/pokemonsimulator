@@ -1,6 +1,6 @@
 class CalcController < ApplicationController
   extend ActiveHash::Associations::ActiveRecordExtensions
-  before_action :set_natures
+  before_action :set_natures, :set_weathers
 
   def index
     @pokemon_left = Pokemon.find_by_name "ミミッキュ"
@@ -32,6 +32,10 @@ class CalcController < ApplicationController
 
   def set_natures
     @natures = Nature.all
+  end
+
+  def set_weathers
+    @weathers = Weather.all
   end
 
   def default_status
