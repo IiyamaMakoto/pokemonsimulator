@@ -7,8 +7,9 @@
       Lv.
       = text_field_tag "level_#{side}", status[:level], class: "pokemon__level"
     .pokemon__type_box
-      %div{class: "pokemon__type--#{pokemon.types[0].id}"}
-        = pokemon.types[0].name
+      - if pokemon.types[0]
+        %div{class: "pokemon__type--#{pokemon.types[0].id}"}
+          = pokemon.types[0].name
       - if pokemon.types[1]
         %div{class: "pokemon__type--#{pokemon.types[1].id}"}
           = pokemon.types[1].name
@@ -24,3 +25,8 @@
     .pokemon__form
       特性
       -# = collection_select :status, :ability, @abilities, :id, :name, {class: "pokemon__select"}
+      = select_tag :ability
+    .pokemon__form
+      道具
+      -# = collection_select :status, :item, @items, :id, :name, {class: "pokemon__select"}
+      = select_tag :item
