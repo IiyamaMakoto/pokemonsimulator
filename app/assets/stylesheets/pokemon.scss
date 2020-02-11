@@ -201,7 +201,7 @@
     margin: 5px 0;
     &--middle {
       @extend .pokemon__select;
-      width: 130px;
+      width: 100%;
     }
   }
   &__image {

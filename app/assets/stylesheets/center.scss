@@ -1,6 +1,8 @@
 .center {
   float: left;
   width: 160px;
-  margin-top: 40px;
-  padding: 0 10px;
+  margin: 40px 0;
+  &__label {
+    font-size: 1em;
+  }
 }
