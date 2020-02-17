@@ -21,7 +21,7 @@
       = select_tag :gender, options_for_select([['不明', ''], ['♂', '1'], ['♀', '2']]), {class: "pokemon__select"}
     .pokemon__form
       性格
-      = collection_select :status, :nature, @natures, :id, :name, {selected: status.nature_id}, {class: "pokemon__select"}
+      = collection_select :status, :nature, @natures, :id, :name, {selected: status.nature_id}, {id: "nature_#{side}", class: "pokemon__select"}
     .pokemon__form
       特性
       -# = collection_select :status, :ability, @abilities, :id, :name, {class: "pokemon__select"}
