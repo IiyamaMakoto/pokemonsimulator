@@ -200,6 +200,10 @@
     font-size: 14px;
     height: 25px;
     margin: 5px 0;
+    &--long {
+      @extend .pokemon__select;
+      width: 135px;
+    }
     &--middle {
       @extend .pokemon__select;
       width: 100%;
@@ -211,5 +215,8 @@
     background-color: orange;
     float: left;
     margin: 5px;
+  }
+  &__hidden {
+    display: none;
   }
 }

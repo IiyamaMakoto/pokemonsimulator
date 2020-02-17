@@ -1,6 +1,6 @@
 %div{class: "pokemon"}
   .pokemon__header
-    .pokemon__name
+    .pokemon__name{id: "name_#{side}"}
       = pokemon.name
     .pokemon__image
     .pokemon__level_box
@@ -24,9 +24,7 @@
       = collection_select :status, :nature, @natures, :id, :name, {selected: status.nature_id}, {id: "nature_#{side}", class: "pokemon__select"}
     .pokemon__form
       特性
-      -# = collection_select :status, :ability, @abilities, :id, :name, {class: "pokemon__select"}
-      = select_tag :ability, {prompt: "---"}, {class: "pokemon__select"}
+      = collection_select :status, :ability, abilities, :id, :name, {}, {id: "abilities_#{side}", class: "pokemon__select--long"}
     .pokemon__form
       道具
-      -# = collection_select :status, :item, @items, :id, :name, {class: "pokemon__select"}
-      = select_tag :item, {prompt: "---"}, {class: "pokemon__select"}
+      = collection_select :status, :item, @items, :id, :name, {}, {id: "items_#{side}", class: "pokemon__select--long"}

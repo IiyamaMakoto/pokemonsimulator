@@ -1,22 +1,14 @@
 class CalcController < ApplicationController
   extend ActiveHash::Associations::ActiveRecordExtensions
-  before_action :set_natures, :set_weathers, :set_fields, :selectable_setting, except: :search
+  before_action :set_natures, :set_items, :set_weathers, :set_fields, :selectable_setting, except: :search
 
   def index
     @pokemon_left = Pokemon.find_by_name "ミミッキュ"
     @status_left = Status.new(@pokemon_left)
+    @abilities_left = @pokemon_left.abilities
     @pokemon_right = Pokemon.find_by_name "ドリュウズ"
     @status_right = Status.new(@pokemon_right)
-  end
-
-  def set_left
-    @pokemon_left = Pokemon.find(params[:id])
-    @status_left = Status.new(@pokemon_left)
-  end
-
-  def set_right
-    @pokemon_right = Pokemon.find(params[:id])
-    @status_right = Status.new(@pokemon_right)
+    @abilities_right = @pokemon_right.abilities
   end
 
   def search
@@ -28,7 +20,19 @@ class CalcController < ApplicationController
     end
   end
 
+  def result
+    keyword = params[:keyword]
+    @pokemon = Pokemon.find_by(name: keyword)
+    respond_to do |format|
+      format.json
+    end
+  end
+
   private
+
+  def status_params
+    params.permit(:level_left, :hp_iv, :hp_ev, :attack_iv, :attack_ev, :defence_iv, :defence_ev, :sp_atk_iv, :sp_atk_ev, :sp_def_iv, :sp_def_ev, :speed_iv, :speed_ev)
+  end
 
   def selectable_setting
     @iv_selectable = []
@@ -47,6 +51,10 @@ class CalcController < ApplicationController
     @natures = Nature.all
   end
 
+  def set_items
+    @items = Item.all
+  end
+
   def set_weathers
     @weathers = Weather.all
   end
@@ -54,4 +62,5 @@ class CalcController < ApplicationController
   def set_fields
     @fields = Field.all
   end
+
 end

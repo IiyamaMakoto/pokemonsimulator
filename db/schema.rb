@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_07_162826) do
+ActiveRecord::Schema.define(version: 2020_02_17_103424) do
+
+  create_table "abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pokemon_abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "pokemon_id", null: false
+    t.bigint "ability_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ability_id"], name: "index_pokemon_abilities_on_ability_id"
+    t.index ["pokemon_id"], name: "index_pokemon_abilities_on_pokemon_id"
+  end
 
   create_table "pokemon_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "pokemon_id", null: false
@@ -41,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_02_07_162826) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "pokemon_abilities", "abilities"
+  add_foreign_key "pokemon_abilities", "pokemons"
   add_foreign_key "pokemon_types", "pokemons"
   add_foreign_key "pokemon_types", "types"
 end
