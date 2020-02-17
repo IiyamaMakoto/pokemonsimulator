@@ -3,10 +3,7 @@ Rails.application.routes.draw do
   resources :calc, only: :index do
     collection do
       get :search
-    end
-    member do
-      get :set_left
-      get :set_right
+      get :result
     end
   end
 end
