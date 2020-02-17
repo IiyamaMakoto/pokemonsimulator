@@ -6,7 +6,7 @@
     .pokemon__level_box
       Lv.
       = text_field_tag "level_#{side}", status.level, class: "pokemon__level"
-    .pokemon__type_box
+    .pokemon__type_box{id: "type_#{side}"}
       - if pokemon.types[0]
         %div{class: "pokemon__type--#{pokemon.types[0].id}"}
           = pokemon.types[0].name
