@@ -1,6 +1,6 @@
 class CalcController < ApplicationController
   extend ActiveHash::Associations::ActiveRecordExtensions
-  before_action :set_natures, :set_weathers, :set_fields
+  before_action :set_natures, :set_weathers, :set_fields, :selectable_setting, except: :search
 
   def index
     @pokemon_left = Pokemon.find_by_name "ミミッキュ"
@@ -29,6 +29,19 @@ class CalcController < ApplicationController
   end
 
   private
+
+  def selectable_setting
+    @iv_selectable = []
+    @iv_selectable << 31
+    for num in 0..30 do
+      @iv_selectable << num
+    end
+    @ev_selectable = []
+    @ev_selectable << 252
+    for num in 0..251 do
+      @ev_selectable << num
+    end
+  end
 
   def set_natures
     @natures = Nature.all

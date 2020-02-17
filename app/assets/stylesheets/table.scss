@@ -7,6 +7,7 @@
   th, td {
     border: solid 1px $bg-left;
     padding: 2px;
+    position: relative;
   }
   th {
     color: white;
@@ -24,5 +25,24 @@
     border-style: none;
     text-align: center;
     outline: none;
+  }
+  &__select_form {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 46px;
+    height: 25px;
+    border-style: none;
+    background-color: white;
+    -webkit-appearance: none;
+    outline: none;
+    &::-ms-expand {
+      display: none;
+    }
+    &:focus {
+      z-index: -1;
+      opacity: 1;
+    }
   }
 }
