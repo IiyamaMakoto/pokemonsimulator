@@ -140,8 +140,8 @@ $(function() {
   function nature_correction(side, nature_id) {
     var up_status_id = Math.floor(nature_id / 10);
     var down_status_id = nature_id % 10;
-    $('.table__correction--up').removeClass("table__correction--up");
-    $('.table__correction--down').removeClass("table__correction--down");
+    $('.table_'+side+' .table__correction--up').removeClass("table__correction--up");
+    $('.table_'+side+' .table__correction--down').removeClass("table__correction--down");
     if (up_status_id === down_status_id) {return};
     $('tr[val=status_'+up_status_id+'_'+side+']').addClass("table__correction--up");
     $('tr[val=status_'+down_status_id+'_'+side+']').addClass("table__correction--down");
