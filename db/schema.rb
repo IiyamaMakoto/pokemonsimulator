@@ -10,12 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_103424) do
+ActiveRecord::Schema.define(version: 2020_02_18_003114) do
 
   create_table "abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "moves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "category", null: false
+    t.bigint "type_id", null: false
+    t.integer "power"
+    t.integer "max_power"
+    t.integer "accuracy"
+    t.integer "pp"
+    t.integer "critical", default: 0
+    t.boolean "contact", default: false
+    t.integer "multi_hit"
+    t.integer "priority", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["type_id"], name: "index_moves_on_type_id"
   end
 
   create_table "pokemon_abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -25,6 +42,15 @@ ActiveRecord::Schema.define(version: 2020_02_17_103424) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["ability_id"], name: "index_pokemon_abilities_on_ability_id"
     t.index ["pokemon_id"], name: "index_pokemon_abilities_on_pokemon_id"
+  end
+
+  create_table "pokemon_moves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "pokemon_id", null: false
+    t.bigint "move_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["move_id"], name: "index_pokemon_moves_on_move_id"
+    t.index ["pokemon_id"], name: "index_pokemon_moves_on_pokemon_id"
   end
 
   create_table "pokemon_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -56,8 +82,11 @@ ActiveRecord::Schema.define(version: 2020_02_17_103424) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "moves", "types"
   add_foreign_key "pokemon_abilities", "abilities"
   add_foreign_key "pokemon_abilities", "pokemons"
+  add_foreign_key "pokemon_moves", "moves"
+  add_foreign_key "pokemon_moves", "pokemons"
   add_foreign_key "pokemon_types", "pokemons"
   add_foreign_key "pokemon_types", "types"
 end
