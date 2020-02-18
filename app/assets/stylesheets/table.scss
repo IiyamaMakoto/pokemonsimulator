@@ -1,7 +1,7 @@
 .table {
   font-size: 18px;
   text-align: center;
-  margin: 0 10px;
+  margin-left: 10px;
   float: left;
   border-collapse: collapse;
   th, td {
@@ -9,7 +9,10 @@
     padding: 2px;
     position: relative;
   }
-  th {
+  td.table__text_box {
+    padding: 0;
+  }
+th {
     color: white;
     font-size: 12px;
     background-color: $bg-left;
@@ -21,10 +24,10 @@
   }
   &__text_field {
     width: 42px;
-    height: 20px;
+    height: 25px;
     border-style: none;
     text-align: center;
-    outline: none;
+    margin: 0;
   }
   &__select_form {
     opacity: 0;

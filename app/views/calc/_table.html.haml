@@ -19,7 +19,7 @@
         %div{class: "table__hp_ev_#{side}"}
           = status.hp_ev
         = f.select :hp_ev, @ev_selectable, {selected: status.hp_ev}, {id: "hp_ev_#{side}", class: :table__select_form}
-      %td
+      %td.table__text_box
         = f.text_field :hp_value, id: "hp_value_#{side}", value: status.hp_value, class: :table__text_field
     %tr
       %td.table__label 攻撃
@@ -33,7 +33,7 @@
         %div{class: "table__attack_ev_#{side}"}
           = status.attack_ev
         = f.select :attack_ev, @ev_selectable, {selected: status.attack_ev}, {id: "attack_ev_#{side}", class: :table__select_form}
-      %td
+      %td.table__text_box
         = f.text_field :attack_value, id: "attack_value_#{side}", value: status.attack_value, class: :table__text_field
     %tr
       %td.table__label 防御
@@ -47,7 +47,7 @@
         %div{class: "table__defence_ev_#{side}"}
           = status.defence_ev
         = f.select :defence_ev, @ev_selectable, {selected: status.defence_ev}, {id: "defence_ev_#{side}", class: :table__select_form}
-      %td
+      %td.table__text_box
         = f.text_field :defence_value, id: "defence_value_#{side}", value: status.defence_value, class: :table__text_field
     %tr
       %td.table__label 特攻
@@ -61,7 +61,7 @@
         %div{class: "table__sp_atk_ev_#{side}"}
           = status.sp_atk_ev
         = f.select :sp_atk_ev, @ev_selectable, {selected: status.sp_atk_ev}, {id: "sp_atk_ev_#{side}", class: :table__select_form}
-      %td
+      %td.table__text_box
         = f.text_field :sp_atk_value, id: "sp_atk_value_#{side}", value: status.sp_atk_value, class: :table__text_field
     %tr
       %td.table__label 特防
@@ -75,7 +75,7 @@
         %div{class: "table__sp_def_ev_#{side}"}
           = status.sp_def_ev
         = f.select :sp_def_ev, @ev_selectable, {selected: status.sp_def_ev}, {id: "sp_def_ev_#{side}", class: :table__select_form}
-      %td
+      %td.table__text_box
         = f.text_field :sp_def_value, id: "sp_def_value_#{side}", value: status.sp_def_value, class: :table__text_field
     %tr
       %td.table__label 素早
@@ -89,5 +89,5 @@
         %div{class: "table__speed_ev_#{side}"}
           = status.speed_ev
         = f.select :speed_ev, @ev_selectable, {selected: status.speed_ev}, {id: "speed_ev_#{side}", class: :table__select_form}
-      %td
+      %td.table__text_box
         = f.text_field :speed_value, id: "speed_value_#{side}", value: status.speed_value, class: :table__text_field

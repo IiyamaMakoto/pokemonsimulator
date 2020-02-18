@@ -15,16 +15,35 @@
           = pokemon.types[1].name
 
   .pokemon__middle
-    = render partial: "table" ,locals: {pokemon: pokemon, side: side, status: status}
-    .pokemon__form
-      性別
-      = select_tag :gender, options_for_select([['不明', ''], ['♂', '1'], ['♀', '2']]), {class: "pokemon__select"}
-    .pokemon__form
-      性格
-      = collection_select :status, :nature, @natures, :id, :name, {selected: status.nature_id}, {id: "nature_#{side}", class: "pokemon__select"}
-    .pokemon__form
-      特性
-      = collection_select :status, :ability, abilities, :id, :name, {}, {id: "abilities_#{side}", class: "pokemon__select--long"}
-    .pokemon__form
-      道具
-      = collection_select :status, :item, @items, :id, :name, {}, {id: "items_#{side}", class: "pokemon__select--long"}
+    .pokemon__middle--left
+      = render partial: "table" ,locals: {pokemon: pokemon, side: side, status: status}
+    .pokemon__middle--right
+      .pokemon__form
+        性別
+        = select_tag :gender, options_for_select([['不明', ''], ['♂', '1'], ['♀', '2']]), {class: "pokemon__select--short"}
+      .pokemon__form
+        性格
+        = collection_select :status, :nature, @natures, :id, :name, {selected: status.nature_id}, {id: "nature_#{side}", class: "pokemon__select"}
+      .pokemon__form
+        特性
+        = collection_select :status, :ability, abilities, :id, :name, {}, {id: "abilities_#{side}", class: "pokemon__select--long"}
+      .pokemon__form
+        道具
+        = collection_select :status, :item, @items, :id, :name, {}, {id: "items_#{side}", class: "pokemon__select--long"}
+  .pokemon__bottom
+    .pokemon__move
+      わざ1
+      = text_field_tag "move1_#{side}", "", class: "pokemon__text_form"
+      .pokemon__btn{id: "move1_#{side}_btn"} 選択
+    .pokemon__move
+      わざ2
+      = text_field_tag "move2_#{side}", "", class: "pokemon__text_form"
+      .pokemon__btn{id: "move2_#{side}_btn"} 選択
+    .pokemon__move
+      わざ3
+      = text_field_tag "move3_#{side}", "", class: "pokemon__text_form"
+      .pokemon__btn{id: "move3_#{side}_btn"} 選択
+    .pokemon__move
+      わざ4
+      = text_field_tag "move4_#{side}", "", class: "pokemon__text_form"
+      .pokemon__btn{id: "move4_#{side}_btn"} 選択
