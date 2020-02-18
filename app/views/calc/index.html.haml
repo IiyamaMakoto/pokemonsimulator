@@ -5,12 +5,12 @@
 
   .middle__background
     .middle__contents
-      = render partial: "search", locals: {pokemon: @pokemon_left, side: "left", status: @status_left}
+      = render partial: "search", locals: {pokemon: @pokemon_left, side: "left", status: @status_left, abilities: @abilities_left}
 
       .center
         = render partial: "center"
 
-      = render partial: "search", locals: {pokemon: @pokemon_right, side: "right", status: @status_right}
+      = render partial: "search", locals: {pokemon: @pokemon_right, side: "right", status: @status_right, abilities: @abilities_right}
 
 
 

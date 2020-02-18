@@ -1,4 +1,10 @@
-.center
-  天候
-  %br
-  = select_tag :weather
+.center__block
+  .center__label
+    天候
+  .center__select
+    = collection_select :status, :weather, @weathers, :id, :name, {prompt: "---"}, {class: "pokemon__select--middle"}
+.center__block
+  .center__label
+    フィールド
+  .center__select
+    = collection_select :status, :field, @fields, :id, :name, {prompt: "---"}, {class: "pokemon__select--middle"}

@@ -1,0 +1,60 @@
+.select_box {
+  &__base {
+    display: inline-block;
+    position: relative;
+    &--form option {
+      display: none;
+      position: relative;
+    }
+  }
+  &__wrapper {
+    display: none;
+  }
+  &__frame {
+    width: 100px;
+    padding: 6px 0;
+    position: absolute;
+    top: 2px;
+    left: -6px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    background-color: #f6f6f6;
+    // &--left {
+    //   @extend .select_box__frame;
+    // }
+    // &--right {
+    //   @extend .select_box__frame;
+    // }
+  }
+  &__line {
+    font-size: 13px;
+    height: 19px;
+    line-height: 19px;
+    padding-left: 16px;
+    user-select: none;
+    cursor: default;
+    z-index: 3;
+    &:hover {
+      color: white;
+      background-color: #08f;
+    }
+    &--selected {
+      @extend .select_box__line;
+      padding-left: 0px;
+      &::before {
+        content: "\2713";
+        font-size: 10px;
+        font-weight: bold;
+        padding-left: 3px;
+      }  
+    }
+  }
+  &__modal {
+    position: absolute;
+    top: -100vh;
+    left: -100vw;
+    height: 200vh;
+    width: 200vw;
+    opacity: 0;
+  }
+}

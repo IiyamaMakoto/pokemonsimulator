@@ -1,22 +1,14 @@
 class CalcController < ApplicationController
   extend ActiveHash::Associations::ActiveRecordExtensions
-  before_action :set_natures
+  before_action :set_natures, :set_items, :set_weathers, :set_fields, :selectable_setting, except: :search
 
   def index
     @pokemon_left = Pokemon.find_by_name "ミミッキュ"
-    left_status_setting
+    @status_left = Status.new(@pokemon_left)
+    @abilities_left = @pokemon_left.abilities
     @pokemon_right = Pokemon.find_by_name "ドリュウズ"
-    right_status_setting
-  end
-
-  def set_left
-    @pokemon_left = Pokemon.find(params[:id])
-    left_status_setting
-  end
-
-  def set_right
-    @pokemon_right = Pokemon.find(params[:id])
-    right_status_setting
+    @status_right = Status.new(@pokemon_right)
+    @abilities_right = @pokemon_right.abilities
   end
 
   def search
@@ -28,51 +20,47 @@ class CalcController < ApplicationController
     end
   end
 
+  def result
+    keyword = params[:keyword]
+    @pokemon = Pokemon.find_by(name: keyword)
+    respond_to do |format|
+      format.json
+    end
+  end
+
   private
+
+  def status_params
+    params.permit(:level_left, :hp_iv, :hp_ev, :attack_iv, :attack_ev, :defence_iv, :defence_ev, :sp_atk_iv, :sp_atk_ev, :sp_def_iv, :sp_def_ev, :speed_iv, :speed_ev)
+  end
+
+  def selectable_setting
+    @iv_selectable = []
+    @iv_selectable << 31
+    for num in 0..30 do
+      @iv_selectable << num
+    end
+    @ev_selectable = []
+    @ev_selectable << 252
+    for num in 0..251 do
+      @ev_selectable << num
+    end
+  end
 
   def set_natures
     @natures = Nature.all
   end
 
-  def default_status
-    {level: 50,
-      hp_iv: 31, hp_ev: 0,
-      attack_iv: 31, attack_ev: 0,
-      defence_iv: 31, defence_ev: 0,
-      sp_atk_iv: 31, sp_atk_ev: 0,
-      sp_def_iv: 31, sp_def_ev: 0,
-      speed_iv: 31, speed_ev: 0,
-      nature_id: 11
-    }
+  def set_items
+    @items = Item.all
   end
 
-  def status_calc(pokemon, status)
-    status[:hp_value] = (((status[:hp_ev]*0.25)+pokemon.hp*2+status[:hp_iv])/100*status[:level]+10+status[:level]).floor
-    status[:hp_value] = 1 if pokemon.hp == 1
-    status[:attack_value] = (((status[:attack_ev]*0.25)+pokemon.attack*2+status[:attack_iv])/100*status[:level]+5).floor
-    status[:attack_value] = (status[:attack_value]*1.1).floor if status[:nature_id]/10.floor == 1 && status[:nature_id]%10 != 1
-    status[:attack_value] = (status[:attack_value]*0.9).floor if status[:nature_id]/10.floor != 1 && status[:nature_id]%10 == 1
-    status[:defence_value] = (((status[:defence_ev]*0.25)+pokemon.defence*2+status[:defence_iv])/100*status[:level]+5).floor
-    status[:defence_value] = (status[:defence_value]*1.1).floor if status[:nature_id]/10.floor == 2 && status[:nature_id]%10 != 2
-    status[:defence_value] = (status[:defence_value]*0.9).floor if status[:nature_id]/10.floor != 2 && status[:nature_id]%10 == 2
-    status[:sp_atk_value] = (((status[:sp_atk_ev]*0.25)+pokemon.sp_atk*2+status[:sp_atk_iv])/100*status[:level]+5).floor
-    status[:sp_atk_value] = (status[:sp_atk_value]*1.1).floor if status[:nature_id]/10.floor == 3 && status[:nature_id]%10 != 3
-    status[:sp_atk_value] = (status[:sp_atk_value]*0.9).floor if status[:nature_id]/10.floor != 3 && status[:nature_id]%10 == 3
-    status[:sp_def_value] = (((status[:sp_def_ev]*0.25)+pokemon.sp_def*2+status[:sp_def_iv])/100*status[:level]+5).floor
-    status[:sp_def_value] = (status[:sp_def_value]*1.1).floor if status[:nature_id]/10.floor == 4 && status[:nature_id]%10 != 4
-    status[:sp_def_value] = (status[:sp_def_value]*0.9).floor if status[:nature_id]/10.floor != 4 && status[:nature_id]%10 == 4
-    status[:speed_value] = (((status[:speed_ev]*0.25)+pokemon.speed*2+status[:speed_iv])/100*status[:level]+5).floor
-    status[:speed_value] = (status[:speed_value]*1.1).floor if status[:nature_id]/10.floor == 5 && status[:nature_id]%10 != 5
-    status[:speed_value] = (status[:speed_value]*0.9).floor if status[:nature_id]/10.floor != 5 && status[:nature_id]%10 == 5
+  def set_weathers
+    @weathers = Weather.all
   end
 
-  def left_status_setting
-    @status_left = default_status
-    status_calc(@pokemon_left, @status_left)
+  def set_fields
+    @fields = Field.all
   end
 
-  def right_status_setting
-    @status_right = default_status
-    status_calc(@pokemon_right, @status_right)
-  end
 end

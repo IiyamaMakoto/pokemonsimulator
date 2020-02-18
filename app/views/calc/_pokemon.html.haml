@@ -1,26 +1,57 @@
 %div{class: "pokemon"}
   .pokemon__header
-    .pokemon__name
+    .pokemon__name{id: "name_#{side}"}
       = pokemon.name
     .pokemon__image
     .pokemon__level_box
       Lv.
-      = text_field_tag "level_#{side}", status[:level], class: "pokemon__level"
-    .pokemon__type_box
-      %div{class: "pokemon__type--#{pokemon.types[0].id}"}
-        = pokemon.types[0].name
+      = text_field_tag "level_#{side}", status.level, class: "pokemon__level"
+    .pokemon__type_box{id: "type_#{side}"}
+      - if pokemon.types[0]
+        %div{class: "pokemon__type--#{pokemon.types[0].id}"}
+          = pokemon.types[0].name
       - if pokemon.types[1]
         %div{class: "pokemon__type--#{pokemon.types[1].id}"}
           = pokemon.types[1].name
 
   .pokemon__middle
-    = render partial: "table" ,locals: {pokemon: pokemon, status: status}
-    .pokemon__form
-      性別
-      = select_tag :gender, options_for_select([['不明', ''], ['♂', '1'], ['♀', '2']]), {class: "pokemon__select"}
-    .pokemon__form
-      性格
-      = collection_select :status, :nature, @natures, :id, :name, {selected: status[:nature_id]}, {class: "pokemon__select"}
-    .pokemon__form
-      特性
-      -# = collection_select :status, :ability, @abilities, :id, :name, {class: "pokemon__select"}
+    .pokemon__middle--left
+      = render partial: "table" ,locals: {pokemon: pokemon, side: side, status: status}
+    .pokemon__middle--right
+      .pokemon__form
+        性別
+        = select_tag :gender, options_for_select([['不明', ''], ['♂', '1'], ['♀', '2']]), {class: "pokemon__select--short"}
+      .pokemon__form
+        性格
+        .select_box__base
+          = collection_select :status, :nature, @natures, :id, :name, {}, {id: "nature_#{side}", class: "pokemon__select select_box__base--form"}
+          .select_box__wrapper{class: "select_box_#{side}"}
+            .select_box__modal
+            .select_box__frame
+              - @natures.each do |nature|
+                %div{class: "select_box__line#{' select_box__line--selected' if nature.id == status.nature_id}", val: "#{nature.id}"}
+                  = nature.name
+                
+      .pokemon__form
+        特性
+        = collection_select :status, :ability, abilities, :id, :name, {}, {id: "abilities_#{side}", class: "pokemon__select--long"}
+      .pokemon__form
+        道具
+        = collection_select :status, :item, @items, :id, :name, {}, {id: "items_#{side}", class: "pokemon__select--long"}
+  .pokemon__bottom
+    .pokemon__move
+      わざ
+      = text_field_tag "move1_#{side}", "", class: "pokemon__text_form"
+      .pokemon__btn{id: "move1_#{side}_btn"} 選択
+    .pokemon__move
+      わざ
+      = text_field_tag "move2_#{side}", "", class: "pokemon__text_form"
+      .pokemon__btn{id: "move2_#{side}_btn"} 選択
+    .pokemon__move
+      わざ
+      = text_field_tag "move3_#{side}", "", class: "pokemon__text_form"
+      .pokemon__btn{id: "move3_#{side}_btn"} 選択
+    .pokemon__move
+      わざ
+      = text_field_tag "move4_#{side}", "", class: "pokemon__text_form"
+      .pokemon__btn{id: "move4_#{side}_btn"} 選択

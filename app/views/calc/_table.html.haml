@@ -1,68 +1,93 @@
-%table.pokemon__table
-  %tr
-    %th 
-    %th 種族値
-    %th 個体値
-    %th 努力値
-    %th 実数値
+= form_with do |f|
+  %table{class: "table table_#{side}"}
+    %tr
+      %th 
+      %th 種族値
+      %th 個体値
+      %th 努力値
+      %th 実数値
 
-  %tr
-    %td HP
-    %td
-      = pokemon.hp
-    %td
-      = status[:hp_iv]
-    %td
-      = status[:hp_ev]
-    %td
-      = status[:hp_value]
-  %tr
-    %td.pokemon__table--label 攻撃
-    %td
-      = pokemon.attack
-    %td
-      = status[:attack_iv]
-    %td
-      = status[:attack_ev]
-    %td
-      = status[:attack_value]
-  %tr
-    %td.pokemon__table--label 防御
-    %td
-      = pokemon.defence
-    %td
-      = status[:defence_iv]
-    %td
-      = status[:defence_ev]
-    %td
-      = status[:defence_value]
-  %tr
-    %td.pokemon__table--label 特攻
-    %td
-      = pokemon.sp_atk
-    %td
-      = status[:sp_atk_iv]
-    %td
-      = status[:sp_atk_ev]
-    %td
-      = status[:sp_atk_value]
-  %tr
-    %td.pokemon__table--label 特防
-    %td
-      = pokemon.sp_def
-    %td
-      = status[:sp_def_iv]
-    %td
-      = status[:sp_def_ev]
-    %td
-      = status[:sp_def_value]
-  %tr
-    %td.pokemon__table--label 素早
-    %td
-      = pokemon.speed
-    %td
-      = status[:speed_iv]
-    %td
-      = status[:speed_ev]
-    %td
-      = status[:speed_value]
+    %tr{id: "hp_#{side}"}
+      %td HP
+      %td{id: "hp_base_status_#{side}"}
+        = pokemon.hp
+      %td
+        %div{class: "table__hp_iv_#{side}"}
+          = status.hp_iv
+        = f.select :hp_iv, @iv_selectable, {selected: status.hp_iv}, {id: "hp_iv_#{side}", class: :table__select_form}
+      %td
+        %div{class: "table__hp_ev_#{side}"}
+          = status.hp_ev
+        = f.select :hp_ev, @ev_selectable, {selected: status.hp_ev}, {id: "hp_ev_#{side}", class: :table__select_form}
+      %td.table__text_box
+        = f.text_field :hp_value, id: "hp_value_#{side}", value: status.hp_value, class: :table__text_field
+    %tr{id: "attack_#{side}", val: "status_1_#{side}"}
+      %td.table__label 攻撃
+      %td{id: "attack_base_status_#{side}"}
+        = pokemon.attack
+      %td
+        %div{class: "table__attack_iv_#{side}"}
+          = status.attack_iv
+        = f.select :attack_iv, @iv_selectable, {selected: status.attack_iv}, {id: "attack_iv_#{side}", class: :table__select_form}
+      %td
+        %div{class: "table__attack_ev_#{side}"}
+          = status.attack_ev
+        = f.select :attack_ev, @ev_selectable, {selected: status.attack_ev}, {id: "attack_ev_#{side}", class: :table__select_form}
+      %td.table__text_box
+        = f.text_field :attack_value, id: "attack_value_#{side}", value: status.attack_value, class: :table__text_field
+    %tr{id: "defence_#{side}", val: "status_2_#{side}"}
+      %td.table__label 防御
+      %td{id: "defence_base_status_#{side}"}
+        = pokemon.defence
+      %td
+        %div{class: "table__defence_iv_#{side}"}
+          = status.defence_iv
+        = f.select :defence_iv, @iv_selectable, {selected: status.defence_iv}, {id: "defence_iv_#{side}", class: :table__select_form}
+      %td
+        %div{class: "table__defence_ev_#{side}"}
+          = status.defence_ev
+        = f.select :defence_ev, @ev_selectable, {selected: status.defence_ev}, {id: "defence_ev_#{side}", class: :table__select_form}
+      %td.table__text_box
+        = f.text_field :defence_value, id: "defence_value_#{side}", value: status.defence_value, class: :table__text_field
+    %tr{id: "sp_atk_#{side}", val: "status_3_#{side}"}
+      %td.table__label 特攻
+      %td{id: "sp_atk_base_status_#{side}"}
+        = pokemon.sp_atk
+      %td
+        %div{class: "table__sp_atk_iv_#{side}"}
+          = status.sp_atk_iv
+        = f.select :sp_atk_iv, @iv_selectable, {selected: status.sp_atk_iv}, {id: "sp_atk_iv_#{side}", class: :table__select_form}
+      %td
+        %div{class: "table__sp_atk_ev_#{side}"}
+          = status.sp_atk_ev
+        = f.select :sp_atk_ev, @ev_selectable, {selected: status.sp_atk_ev}, {id: "sp_atk_ev_#{side}", class: :table__select_form}
+      %td.table__text_box
+        = f.text_field :sp_atk_value, id: "sp_atk_value_#{side}", value: status.sp_atk_value, class: :table__text_field
+    %tr{id: "sp_def_#{side}", val: "status_4_#{side}"}
+      %td.table__label 特防
+      %td{id: "sp_def_base_status_#{side}"}
+        = pokemon.sp_def
+      %td
+        %div{class: "table__sp_def_iv_#{side}"}
+          = status.sp_def_iv
+        = f.select :sp_def_iv, @iv_selectable, {selected: status.sp_def_iv}, {id: "sp_def_iv_#{side}", class: :table__select_form}
+      %td
+        %div{class: "table__sp_def_ev_#{side}"}
+          = status.sp_def_ev
+        = f.select :sp_def_ev, @ev_selectable, {selected: status.sp_def_ev}, {id: "sp_def_ev_#{side}", class: :table__select_form}
+      %td.table__text_box
+        = f.text_field :sp_def_value, id: "sp_def_value_#{side}", value: status.sp_def_value, class: :table__text_field
+    %tr{id: "speed_#{side}", val: "status_5_#{side}"}
+      %td.table__label 素早
+      %td{id: "speed_base_status_#{side}"}
+        = pokemon.speed
+      %td
+        %div{class: "table__speed_iv_#{side}"}
+          = status.speed_iv
+        = f.select :speed_iv, @iv_selectable, {selected: status.speed_iv}, {id: "speed_iv_#{side}", class: :table__select_form}
+      %td
+        %div{class: "table__speed_ev_#{side}"}
+          = status.speed_ev
+        = f.select :speed_ev, @ev_selectable, {selected: status.speed_ev}, {id: "speed_ev_#{side}", class: :table__select_form}
+      %td.table__text_box
+        = f.text_field :speed_value, id: "speed_value_#{side}", value: status.speed_value, class: :table__text_field
