@@ -26,6 +26,8 @@
     top: 25px;
     left: 5px;
     z-index: 3;
+    user-select: none;
+    cursor: pointer;
   }
   &__result {
     color: black;

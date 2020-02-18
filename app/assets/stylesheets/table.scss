@@ -48,4 +48,12 @@ th {
       opacity: 1;
     }
   }
+  &__correction--up {
+    background-color: $status-up;
+    input {background-color: $status-up;}
+  }
+  &__correction--down {
+    background-color: $status-down;
+    input {background-color: $status-down;}
+  }
 }

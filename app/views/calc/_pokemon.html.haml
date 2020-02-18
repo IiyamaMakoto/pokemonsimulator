@@ -23,7 +23,15 @@
         = select_tag :gender, options_for_select([['不明', ''], ['♂', '1'], ['♀', '2']]), {class: "pokemon__select--short"}
       .pokemon__form
         性格
-        = collection_select :status, :nature, @natures, :id, :name, {selected: status.nature_id}, {id: "nature_#{side}", class: "pokemon__select"}
+        .select_box__base
+          = collection_select :status, :nature, @natures, :id, :name, {}, {id: "nature_#{side}", class: "pokemon__select select_box__base--form"}
+          .select_box__wrapper{class: "select_box_#{side}"}
+            .select_box__modal
+            .select_box__frame
+              - @natures.each do |nature|
+                %div{class: "select_box__line#{' select_box__line--selected' if nature.id == status.nature_id}", val: "#{nature.id}"}
+                  = nature.name
+                
       .pokemon__form
         特性
         = collection_select :status, :ability, abilities, :id, :name, {}, {id: "abilities_#{side}", class: "pokemon__select--long"}
@@ -32,18 +40,18 @@
         = collection_select :status, :item, @items, :id, :name, {}, {id: "items_#{side}", class: "pokemon__select--long"}
   .pokemon__bottom
     .pokemon__move
-      わざ1
+      わざ
       = text_field_tag "move1_#{side}", "", class: "pokemon__text_form"
       .pokemon__btn{id: "move1_#{side}_btn"} 選択
     .pokemon__move
-      わざ2
+      わざ
       = text_field_tag "move2_#{side}", "", class: "pokemon__text_form"
       .pokemon__btn{id: "move2_#{side}_btn"} 選択
     .pokemon__move
-      わざ3
+      わざ
       = text_field_tag "move3_#{side}", "", class: "pokemon__text_form"
       .pokemon__btn{id: "move3_#{side}_btn"} 選択
     .pokemon__move
-      わざ4
+      わざ
       = text_field_tag "move4_#{side}", "", class: "pokemon__text_form"
       .pokemon__btn{id: "move4_#{side}_btn"} 選択

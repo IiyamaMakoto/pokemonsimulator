@@ -7,7 +7,7 @@
       %th 努力値
       %th 実数値
 
-    %tr
+    %tr{id: "hp_#{side}"}
       %td HP
       %td{id: "hp_base_status_#{side}"}
         = pokemon.hp
@@ -21,7 +21,7 @@
         = f.select :hp_ev, @ev_selectable, {selected: status.hp_ev}, {id: "hp_ev_#{side}", class: :table__select_form}
       %td.table__text_box
         = f.text_field :hp_value, id: "hp_value_#{side}", value: status.hp_value, class: :table__text_field
-    %tr
+    %tr{id: "attack_#{side}", val: "status_1_#{side}"}
       %td.table__label 攻撃
       %td{id: "attack_base_status_#{side}"}
         = pokemon.attack
@@ -35,7 +35,7 @@
         = f.select :attack_ev, @ev_selectable, {selected: status.attack_ev}, {id: "attack_ev_#{side}", class: :table__select_form}
       %td.table__text_box
         = f.text_field :attack_value, id: "attack_value_#{side}", value: status.attack_value, class: :table__text_field
-    %tr
+    %tr{id: "defence_#{side}", val: "status_2_#{side}"}
       %td.table__label 防御
       %td{id: "defence_base_status_#{side}"}
         = pokemon.defence
@@ -49,7 +49,7 @@
         = f.select :defence_ev, @ev_selectable, {selected: status.defence_ev}, {id: "defence_ev_#{side}", class: :table__select_form}
       %td.table__text_box
         = f.text_field :defence_value, id: "defence_value_#{side}", value: status.defence_value, class: :table__text_field
-    %tr
+    %tr{id: "sp_atk_#{side}", val: "status_3_#{side}"}
       %td.table__label 特攻
       %td{id: "sp_atk_base_status_#{side}"}
         = pokemon.sp_atk
@@ -63,7 +63,7 @@
         = f.select :sp_atk_ev, @ev_selectable, {selected: status.sp_atk_ev}, {id: "sp_atk_ev_#{side}", class: :table__select_form}
       %td.table__text_box
         = f.text_field :sp_atk_value, id: "sp_atk_value_#{side}", value: status.sp_atk_value, class: :table__text_field
-    %tr
+    %tr{id: "sp_def_#{side}", val: "status_4_#{side}"}
       %td.table__label 特防
       %td{id: "sp_def_base_status_#{side}"}
         = pokemon.sp_def
@@ -77,7 +77,7 @@
         = f.select :sp_def_ev, @ev_selectable, {selected: status.sp_def_ev}, {id: "sp_def_ev_#{side}", class: :table__select_form}
       %td.table__text_box
         = f.text_field :sp_def_value, id: "sp_def_value_#{side}", value: status.sp_def_value, class: :table__text_field
-    %tr
+    %tr{id: "speed_#{side}", val: "status_5_#{side}"}
       %td.table__label 素早
       %td{id: "speed_base_status_#{side}"}
         = pokemon.speed

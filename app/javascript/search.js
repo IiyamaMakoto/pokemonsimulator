@@ -137,6 +137,16 @@ $(function() {
     $('.table__'+stts+'_ev_'+side).text(ev);
     $(event.target).blur();
   };
+  function nature_correction(side, nature_id) {
+    var up_status_id = Math.floor(nature_id / 10);
+    var down_status_id = nature_id % 10;
+    $('.table__correction--up').removeClass("table__correction--up");
+    $('.table__correction--down').removeClass("table__correction--down");
+    if (up_status_id === down_status_id) {return};
+    $('tr[val=status_'+up_status_id+'_'+side+']').addClass("table__correction--up");
+    $('tr[val=status_'+down_status_id+'_'+side+']').addClass("table__correction--down");
+  };
+
 
 // 文字入力もしくはフォームをクリックで検索結果が表示される
   $('#search_left').on('keyup click', function(){
@@ -150,7 +160,11 @@ $(function() {
   $('#search_right').on('keyup click', function(){
     var input = $('#search_right').val();
     search_ajax(input, "#search_list_right", "right");
-  })
+  });
+  $('.right').on('click', '.pokemon__result_right', function() {
+    var input = $(event.target).text();
+    result_ajax(input, "right");
+  });
 // どこかをクリックすると検索結果が削除される
   $(document).on("click", function(){
     $('.pokemon__search_result').empty();
@@ -218,5 +232,112 @@ $(function() {
     status_ev_calc("left", "sp_def");
     status_ev_calc("left", "speed");
   });
+  $('#nature_left').on('click', function() {
+    $('.select_box_left').show();
+      $('.select_box__line').on('mouseenter', function() {
+        var nature_id = $(event.target).attr("val");
+        $('#nature_left').val(nature_id);
+        nature_correction("left", nature_id);
+        status_ev_calc("left", "attack");
+        status_ev_calc("left", "defence");
+        status_ev_calc("left", "sp_atk");
+        status_ev_calc("left", "sp_def");
+        status_ev_calc("left", "speed");
+      });
+    });
+  $('.select_box_left .select_box__line').on('click', function() {
+    var nature_id = $(event.target).attr("val");
+    $('#nature_left').val(nature_id);
+    $('.select_box_left .select_box__line--selected').addClass("select_box__line").removeClass("select_box__line--selected");
+    $(event.target).addClass("select_box__line--selected").removeClass("select_box__line");
+    $('.select_box__line').off('mouseenter');
+  });
+  $('.select_box_left').on('click', function() {
+    $('.select_box_left').fadeOut();
+  });
 
+  $('.right').on('change', '#hp_iv_right', function() {
+    hp_iv_calc("right");
+  });
+  $('.right').on('change', '#hp_ev_right', function() {
+    hp_ev_calc("right");
+  });
+  $('.right').on('change', '#hp_value_right', function() {
+    hp_value_calc("right");
+  });
+  $('.right').on('change', '#attack_iv_right', function() {
+    status_iv_calc("right", "attack");
+  });
+  $('.right').on('change', '#attack_ev_right', function() {
+    status_ev_calc("right", "attack");
+  });
+  $('.right').on('change', '#attack_value_right', function() {
+    status_value_calc("right", "attack");
+  });
+  $('.right').on('change', '#defence_iv_right', function() {
+    status_iv_calc("right", "defence");
+  });
+  $('.right').on('change', '#defence_ev_right', function() {
+    status_ev_calc("right", "defence");
+  });
+  $('.right').on('change', '#defence_value_right', function() {
+    status_value_calc("right", "defence");
+  });
+  $('.right').on('change', '#sp_atk_iv_right', function() {
+    status_iv_calc("right", "sp_atk");
+  });
+  $('.right').on('change', '#sp_atk_ev_right', function() {
+    status_ev_calc("right", "sp_atk");
+  });
+  $('.right').on('change', '#sp_atk_value_right', function() {
+    status_value_calc("right", "sp_atk");
+  });
+  $('.right').on('change', '#sp_def_iv_right', function() {
+    status_iv_calc("right", "sp_def");
+  });
+  $('.right').on('change', '#sp_def_ev_right', function() {
+    status_ev_calc("right", "sp_def");
+  });
+  $('.right').on('change', '#sp_def_value_right', function() {
+    status_value_calc("right", "sp_def");
+  });
+  $('.right').on('change', '#speed_iv_right', function() {
+    status_iv_calc("right", "speed");
+  });
+  $('.right').on('change', '#speed_ev_right', function() {
+    status_ev_calc("right", "speed");
+  });
+  $('.right').on('change', '#speed_value_right', function() {
+    status_value_calc("right", "speed");
+  });
+  $('.right').on('change', '#nature_right', function() {
+    status_ev_calc("right", "attack");
+    status_ev_calc("right", "defence");
+    status_ev_calc("right", "sp_atk");
+    status_ev_calc("right", "sp_def");
+    status_ev_calc("right", "speed");
+  });
+  $('#nature_right').on('click', function() {
+    $('.select_box_right').show();
+      $('.select_box__line').on('mouseenter', function() {
+        var nature_id = $(event.target).attr("val");
+        $('#nature_right').val(nature_id);
+        nature_correction("right", nature_id);
+        status_ev_calc("right", "attack");
+        status_ev_calc("right", "defence");
+        status_ev_calc("right", "sp_atk");
+        status_ev_calc("right", "sp_def");
+        status_ev_calc("right", "speed");
+      });
+    });
+  $('.select_box_right .select_box__line').on('click', function() {
+    var nature_id = $(event.target).attr("val");
+    $('#nature_right').val(nature_id);
+    $('.select_box_right .select_box__line--selected').addClass("select_box__line").removeClass("select_box__line--selected");
+    $(event.target).addClass("select_box__line--selected").removeClass("select_box__line");
+    $('.select_box__line').off('mouseenter');
+  });
+  $('.select_box_right').on('click', function() {
+    $('.select_box_right').fadeOut();
+  });
 });
