@@ -1,0 +1,24 @@
+.rank {
+  margin: 10px;
+  &__title {
+    font-weight: bold;
+  }
+  &__label {
+    margin-left: 15px;
+    display: inline-block;
+  }
+  &__box {
+    display: inline-block;
+  }
+  &__select {
+    font-size: 14px;
+    width: 35px;
+    height: 25px;
+    line-height: 25px;
+    font-weight: bold;
+    margin: 5px 0;
+    padding-left: 8px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+}

@@ -1,8 +1,8 @@
 .pokemon {
-  margin: 30px 3px 3px 3px;
+  margin: 30px 3px 5px 3px;
+  padding-bottom: 1px;
   border-radius: 5px;
   background-color: white;
-  height: 427px;
   &__header {
     width: 100%;
     height: 40px;
@@ -220,12 +220,6 @@
   }
   &__hidden {
     display: none;
-  }
-  &__moves {
-    margin: 10px;
-  }
-  &__move {
-    height: 35px;
   }
   &__text_form {
     font-size: 14px;
