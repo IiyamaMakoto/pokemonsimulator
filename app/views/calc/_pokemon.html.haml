@@ -35,23 +35,66 @@
       .pokemon__form
         特性
         = collection_select :status, :ability, abilities, :id, :name, {}, {id: "abilities_#{side}", class: "pokemon__select--long"}
+      - if false
+        .pokemon__form
+          = select_tag :status_ailment, options_for_select([['有効', '1'], ['無効', '0']]), {class: "pokemon__select"}
       .pokemon__form
         道具
         = collection_select :status, :item, @items, :id, :name, {}, {id: "items_#{side}", class: "pokemon__select--long"}
-  .pokemon__bottom
+      .pokemon__form
+        状態異常
+        = select_tag :status_ailment, options_for_select([['---', ''], ['まひ', '1'], ['やけど', '2']]), {class: "pokemon__select"}
+
+  .pokemon__moves
     .pokemon__move
       わざ
-      = text_field_tag "move1_#{side}", "", class: "pokemon__text_form"
-      .pokemon__btn{id: "move1_#{side}_btn"} 選択
+      = text_field_tag "move1_#{side}", Move.all[0].name, class: "pokemon__text_form"
+      - if Move.all[0].type
+        %div{class: "pokemon__type--#{Move.all[0].type.id} pokemon__type--move"}
+          = Move.all[0].type.name
+      .move__power
+        .move__power--label
+          威力：
+        .move__power--value
+          = Move.all[0].power
+      .move__btn{id: "move1_#{side}_btn"} 選択
     .pokemon__move
       わざ
-      = text_field_tag "move2_#{side}", "", class: "pokemon__text_form"
-      .pokemon__btn{id: "move2_#{side}_btn"} 選択
+      = text_field_tag "move2_#{side}", Move.all[1].name, class: "pokemon__text_form"
+      - if Move.all[1].type
+        %div{class: "pokemon__type--#{Move.all[1].type.id} pokemon__type--move"}
+          = Move.all[1].type.name
+      .move__power
+        .move__power--label
+          威力：
+        .move__power--value
+          = Move.all[1].power
+      .move__btn{id: "move2_#{side}_btn"} 選択
     .pokemon__move
       わざ
-      = text_field_tag "move3_#{side}", "", class: "pokemon__text_form"
-      .pokemon__btn{id: "move3_#{side}_btn"} 選択
+      = text_field_tag "move3_#{side}", Move.all[2].name, class: "pokemon__text_form"
+      - if Move.all[2].type
+        %div{class: "pokemon__type--#{Move.all[2].type.id} pokemon__type--move"}
+          = Move.all[2].type.name
+      .move__power
+        .move__power--label
+          威力：
+        .move__power--value
+          = Move.all[2].power
+      .move__btn{id: "move3_#{side}_btn"} 選択
     .pokemon__move
       わざ
-      = text_field_tag "move4_#{side}", "", class: "pokemon__text_form"
-      .pokemon__btn{id: "move4_#{side}_btn"} 選択
+      = text_field_tag "move4_#{side}", Move.all[3].name, class: "pokemon__text_form"
+      - if Move.all[3].type
+        %div{class: "pokemon__type--#{Move.all[3].type.id} pokemon__type--move"}
+          = Move.all[3].type.name
+      .move__power
+        .move__power--label
+          威力：
+        .move__power--value
+          = Move.all[3].power
+      .move__btn{id: "move4_#{side}_btn"} 選択
+
+  .pokemon__ranks
+    .pokemon__rank
+    

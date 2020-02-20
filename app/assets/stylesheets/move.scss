@@ -1,0 +1,30 @@
+.move {
+  &__btn {
+    float: right;
+    width: 40px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    font-size: 14px;
+    display: inline-block;
+    border: solid 1px black;
+    border-radius: 5px;
+    background-color: ghostwhite;
+    cursor: default;
+    margin-top: 5px;
+  }
+  &__power {
+    display: inline-block;
+    line-height: 25px;
+    height: 25px;
+    margin-left: 5px;
+    &--label {
+      display: inline-block;
+    }
+    &--value {
+      width: 28px;
+      text-align: right;
+      display: inline-block;
+    }
+  }
+}

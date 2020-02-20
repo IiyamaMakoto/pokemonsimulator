@@ -6,7 +6,7 @@
   &__header {
     width: 100%;
     height: 40px;
-    margin: 5px;
+    margin: 0 5px;
     @include clearfix;
   }
   &__search_box {
@@ -67,6 +67,9 @@
     font-weight: bold;
     text-align: center;
     border-radius: 3px;
+    &--move {
+      display: inline-block;
+    }
     &--1 {
       @extend .pokemon__type;
       letter-spacing: 0em;
@@ -180,26 +183,6 @@
       margin-right: 5px;
     }
   }
-  &__table {
-    font-size: 18px;
-    text-align: center;
-    margin: 0 10px;
-    float: left;
-    border-collapse: collapse;
-    th, td {
-      border: solid 1px $bg-left;
-      padding: 2px;
-    }
-    th {
-      color: white;
-      font-size: 12px;
-      background-color: $bg-left;
-    }
-    &--label {
-      font-size: 0.8em;
-      font-weight: bold;
-    }
-  }
   &__form {
     font-size: 14px;
     line-height: 25px;
@@ -243,19 +226,6 @@
   }
   &__move {
     height: 35px;
-    line-height: 35px;
-  }
-  &__btn {
-    width: 40px;
-    height: 25px;
-    line-height: 25px;
-    text-align: center;
-    font-size: 14px;
-    display: inline-block;
-    border: solid 1px black;
-    border-radius: 5px;
-    background-color: ghostwhite;
-    cursor: default;
   }
   &__text_form {
     font-size: 14px;
@@ -264,5 +234,6 @@
     line-height: 25px;
     margin: 5px 0;
     padding-left: 8px;
+    display: inline-block;
   }
 }
