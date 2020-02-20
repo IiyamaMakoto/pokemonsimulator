@@ -8,3 +8,29 @@
     フィールド
   .center__select
     = collection_select :status, :field, @fields, :id, :name, {prompt: "---"}, {class: "pokemon__select--middle"}
+.center__block
+  .center__label
+    じゅうりょく
+  .center__select
+    = select_tag :gravity, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--middle"}
+.center__block
+  .center__label--small
+    リフレクター
+  .center__select
+    = select_tag :wall_physical_left, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--short"}
+    .center__spacer
+    = select_tag :wall_physical_right, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--short"}
+.center__block
+  .center__label--small
+    ひかりのかべ
+  .center__select
+    = select_tag :wall_special_left, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--short"}
+    .center__spacer
+    = select_tag :wall_special_right, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--short"}
+.center__block
+  .center__label--small
+    タールショット状態
+  .center__select
+    = select_tag :tar_shot_left, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--short"}
+    .center__spacer
+    = select_tag :tar_shot_right, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--short"}

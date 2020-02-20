@@ -1,8 +1,15 @@
 .center {
   float: left;
-  width: 130px;
+  width: 140px;
   margin: 40px 0;
   &__label {
     font-size: 1em;
+    &--small{
+      font-size: 0.8em;
+    }
+  }
+  &__spacer {
+    width: 41px;
+    display: inline-block;
   }
 }
