@@ -4,33 +4,33 @@
   .rank__box
     .rank__label
       攻撃
-    = select_tag :attack_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "attack_rank_#{side}"}
+    = select_tag :attack_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["±０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "attack_rank_#{side}"}
   .rank__box
     .rank__label
       防御
-    = select_tag :defence_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "defence_rank_#{side}"}
+    = select_tag :defence_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["±０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "defence_rank_#{side}"}
   .rank__box
     .rank__label
       特攻
-    = select_tag :sp_atk_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "sp_atk_rank_#{side}"}
+    = select_tag :sp_atk_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["±０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "sp_atk_rank_#{side}"}
   .rank__box
     .rank__label
       特防
-    = select_tag :sp_def_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "sp_def_rank_#{side}"}
+    = select_tag :sp_def_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["±０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "sp_def_rank_#{side}"}
   .rank__box
     .rank__label
       素早
-    = select_tag :speed_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "speed_rank_#{side}"}
+    = select_tag :speed_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["±０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "speed_rank_#{side}"}
   .rank__box
     .rank__label
       命中
-    = select_tag :accuracy_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "accuracy_rank_#{side}"}
+    = select_tag :accuracy_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["±０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "accuracy_rank_#{side}"}
   .rank__box
     .rank__label
       回避
-    = select_tag :evasion_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "evasion_rank_#{side}"}
+    = select_tag :evasion_rank, options_for_select([["+６", 6], ["+５", 5], ["+４", 4], ["+３", 3], ["+２", 2], ["+１", 1], ["±０",0], ["-１", -1], ["-２", -2], ["-３", -3], ["-４", -4], ["-５", -5], ["-６", -6]], selected: 0), {class: "rank__select", id: "evasion_rank_#{side}"}
   .rank__box
     .rank__label
       急所
-    = select_tag :critical_rank, options_for_select([["+３", 3], ["+２", 2], ["+１", 1], ["０",0], ["-１", -1], ["-２", -2], ["-３", -3]], selected: 0), {class: "rank__select", id: "critical_rank_#{side}"}
+    = select_tag :critical_rank, options_for_select([["+３", 3], ["+２", 2], ["+１", 1], ["±０",0], ["-１", -1], ["-２", -2], ["-３", -3]], selected: 0), {class: "rank__select", id: "critical_rank_#{side}"}
 

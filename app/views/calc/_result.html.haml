@@ -1,0 +1,47 @@
+.result__wrapper
+  - if true
+    .result__up
+      .result__left
+        .result__speed_left--large
+          先攻
+        .result__damage
+          与ダメージ
+          70〜80
+      .result__middle
+        →
+      .result__right
+        .result__hp_wrapper
+          .result__hp_bar--background
+          .result__hp_bar
+          .result__hp_value
+            120〜130 / 200
+        .result__ratio
+          80% ~ 90%
+    .result__down
+      .result__left
+        .result__hp_wrapper
+          .result__hp_bar--background
+          .result__hp_bar
+          .result__hp_value
+            1300〜1300 / 2000
+        .result__ratio
+          80% ~ 90%
+      .result__middle
+        ←
+      .result__right
+        .result__speed_right
+          後攻
+        .result__damage--right
+          与ダメージ
+          70〜80
+
+  - elsif true
+    .result__speed_left
+      後攻
+    .result__speed_right--large
+      先攻
+  - elsif true
+    .result__speed_left
+      同速
+    .result__speed_right
+      同速

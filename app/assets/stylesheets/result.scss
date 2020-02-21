@@ -1,0 +1,114 @@
+.result {
+  &__wrapper {
+    @include clearfix;
+    min-height: 300px;
+    width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    }
+  &__up {
+    height: 50px;
+    margin: 0 auto;
+    @include clearfix;
+  }
+  &__down {
+    height: 50px;
+    margin: 0 auto;
+    @include clearfix;
+  }
+  &__left {
+    width: 420px;
+    height: 50px;
+    float: left;
+    position: relative;
+  }
+  &__middle {
+    width: 160px;
+    height: 50px;
+    float: left;
+    text-align: center;
+    line-height: 50px;
+  }
+  &__right {
+    width: 420px;
+    height: 50px;
+    float: left;
+    position: relative;
+  }
+
+
+  &__speed {
+    &_left {
+      float: right;
+      font-size: 24px;
+      font-style: italic;
+      font-weight: bold;
+      color: gray;
+      text-shadow: 0px 0px 5px gray;
+      margin-right: 10px;
+      text-align: 50px;
+      &--large {
+        @extend .result__speed_left;
+        color: gold;
+        font-size: 30px;
+        text-shadow: 0px 0px 5px blue;
+      }
+    }
+    &_right {
+      float: left;
+      font-size: 24px;
+      font-style: italic;
+      font-weight: bold;
+      color: gray;
+      text-shadow: 0px 0px 5px gray;
+      margin-left: 10px;
+      line-height: 50px;
+      &--large {
+        @extend .result__speed_left;
+        color: yellow;
+        text-shadow: 0px 0px 5px red;
+        font-size: 30px;
+      }
+    }
+  }
+  &__hp_bar {
+    width: 240px;
+    height: 10px;
+    background-color: rgb(15, 128, 0);
+    margin: 10px;
+    float: left;
+    &--background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: gray;
+    }
+  }
+  &__hp_wrapper {
+    width: 100%;
+    @include clearfix;
+  }
+  &__hp_value {
+    width: 160px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 18px;
+    line-height: 30px;
+    margin-right: 10px;
+    text-align: right;
+  }
+  &__ratio {
+    font-weight: bold;
+    margin: 0 30px;
+  }
+  &__damage {
+    float: right;
+    line-height: 50px;
+    margin: 0 30px;
+    &--right {
+      @extend .result__damage;
+      float: left;
+    }
+  }
+}

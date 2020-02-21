@@ -10,9 +10,13 @@
       - if pokemon.types[0]
         %div{class: "pokemon__type--#{pokemon.types[0].id}"}
           = pokemon.types[0].name
+        .body__hidden{id: "pokemon_type1_#{side}"}
+          = pokemon.types[0].id
       - if pokemon.types[1]
         %div{class: "pokemon__type--#{pokemon.types[1].id}"}
           = pokemon.types[1].name
+        .body__hidden{id: "pokemon_type2_#{side}"}
+          = pokemon.types[1].id
 
   .pokemon__middle
     .pokemon__middle--left

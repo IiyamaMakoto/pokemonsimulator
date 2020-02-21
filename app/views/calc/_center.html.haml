@@ -14,14 +14,19 @@
   .center__select
     = select_tag :gravity, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--middle"}
 .center__block
-  .center__label--small
+  .center__label
+    トリックルーム
+  .center__select
+    = select_tag :trick_room, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--middle"}
+.center__block
+  .center__label
     リフレクター
   .center__select
     = select_tag :wall_physical_left, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--short"}
     .center__spacer
     = select_tag :wall_physical_right, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--short"}
 .center__block
-  .center__label--small
+  .center__label
     ひかりのかべ
   .center__select
     = select_tag :wall_special_left, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--short"}

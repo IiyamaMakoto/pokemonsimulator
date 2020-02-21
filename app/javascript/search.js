@@ -48,7 +48,8 @@ $(function() {
       });
       $('#type_'+side).empty();
       pokemon.types.forEach(function(type) {
-        var HTML = `<div class="pokemon__type--${type.id}">${type.name}</div>`;
+        var HTML = `<div class="pokemon__type--${type.id}">${type.name}</div>
+                    <div class="body__hidden" id="pokemon_type1_${side}">${type.id}</div>`;
         $('#type_'+side).append(HTML);
       })
     })

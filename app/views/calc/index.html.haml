@@ -12,12 +12,8 @@
 
       = render partial: "search", locals: {pokemon: @pokemon_right, side: "right", status: @status_right, abilities: @abilities_right}
 
-
-
-
-  .bottom
-
-
+  .result
+    = render partial: "result", locals: {status_left: @status_left, status_right: @status_right}
 
 
   %footer.footer
