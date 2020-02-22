@@ -6,26 +6,44 @@
           先攻
         .result__damage
           与ダメージ
-          70〜80
+          = @damage_left_to_right_min
+          〜
+          = @damage_left_to_right
       .result__middle
         →
       .result__right
         .result__hp_wrapper
           .result__hp_bar--background
-          .result__hp_bar
+          .result__hp_bar--swing{ style: "width: #{240 * @hp_remain_right_max / @hp_right}px;" }
+          .result__hp_bar{ style: "width: #{240 * @hp_remain_right / @hp_right}px;" }
+          .result__hp_bar--spacer
           .result__hp_value
-            120〜130 / 200
+            = @hp_remain_right
+            〜
+            = @hp_remain_right_max
+            ／
+            = @hp_right
         .result__ratio
-          80% ~ 90%
+          = number_to_percentage(100 - 100 * @hp_remain_right_max/@hp_right.to_f, precision: 1)
+          〜
+          = number_to_percentage(100 - 100 * @hp_remain_right/@hp_right.to_f, precision: 1)
     .result__down
       .result__left
         .result__hp_wrapper
           .result__hp_bar--background
-          .result__hp_bar
+          .result__hp_bar--swing{ style: "width: #{240 * @hp_remain_left_max / @hp_left}px;" }
+          .result__hp_bar{ style: "width: #{240 * @hp_remain_left / @hp_left}px;" }
+          .result__hp_bar--spacer
           .result__hp_value
-            1300〜1300 / 2000
+            = @hp_remain_left
+            〜
+            = @hp_remain_left_max
+            ／
+            = @hp_left
         .result__ratio
-          80% ~ 90%
+          = number_to_percentage(100 - 100 * @hp_remain_left_max/@hp_left.to_f, precision: 1)
+          〜
+          = number_to_percentage(100 - 100 * @hp_remain_left/@hp_left.to_f, precision: 1)
       .result__middle
         ←
       .result__right
@@ -33,7 +51,9 @@
           後攻
         .result__damage--right
           与ダメージ
-          70〜80
+          = @damage_right_to_left_min
+          〜
+          = @damage_right_to_left
 
   - elsif true
     .result__speed_left

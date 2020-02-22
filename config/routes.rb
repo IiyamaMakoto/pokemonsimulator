@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :result
+      get :damage
     end
   end
 end

@@ -18,6 +18,7 @@
     left: -6px;
     border: 1px solid lightgray;
     border-radius: 6px;
+    z-index: 3;
     background-color: #f6f6f6;
   }
   &__line {
@@ -27,7 +28,6 @@
     padding-left: 16px;
     user-select: none;
     cursor: default;
-    z-index: 3;
     &:hover {
       color: white;
       background-color: #08f;

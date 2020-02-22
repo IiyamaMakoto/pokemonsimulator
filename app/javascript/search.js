@@ -1,5 +1,5 @@
 $(function() {
-
+  damage_result();
 // インクリメンタルサーチを実行する部分を定義
   function search_ajax(input, target, side) {
     $.ajax({
@@ -51,6 +51,7 @@ $(function() {
         var HTML = `<div class="pokemon__type--${type.id}">${type.name}</div>
                     <div class="body__hidden" id="pokemon_type1_${side}">${type.id}</div>`;
         $('#type_'+side).append(HTML);
+        damage_result();
       })
     })
     .fail(function(){
@@ -148,8 +149,60 @@ $(function() {
     $('tr[val=status_'+down_status_id+'_'+side+']').addClass("table__correction--down");
   };
 
+  function damage_result() {
+    $.ajax({
+      type: "GET",
+      url: "/calc/damage",
+      data: {
+        pokemon_left: $('#name_left').text(),
+        move_left: $('#move1_left').val(),
+        hp_value_left: $('#hp_value_left').val(),
+        attack_value_left: $('#attack_value_left').val(),
+        defence_value_left: $('#defence_value_left').val(),
+        sp_atk_value_left: $('#sp_atk_value_left').val(),
+        sp_def_value_left: $('#sp_def_value_left').val(),
+        speed_value_left: $('#speed_value_left').val(),
+        attack_rank_left: $('#attack_rank_left').val(),
+        defence_rank_left: $('#defence_rank_left').val(),
+        sp_atk_rank_left: $('#sp_atk_rank_left').val(),
+        sp_def_rank_left: $('#sp_def_rank_left').val(),
+        speed_rank_left: $('#speed_rank_left').val(),
+        accuracy_rank_left: $('#accuracy_rank_left').val(),
+        evasion_rank_left: $('#evasion_rank_left').val(),
+        critical_rank_left: $('#critical_rank_left').val(),
+        level_left: $('#level_left').val(),
+        pokemon_right: $('#name_right').text(),
+        move_right: $('#move1_right').val(),
+        hp_value_right: $('#hp_value_right').val(),
+        attack_value_right: $('#attack_value_right').val(),
+        defence_value_right: $('#defence_value_right').val(),
+        sp_atk_value_right: $('#sp_atk_value_right').val(),
+        sp_def_value_right: $('#sp_def_value_right').val(),
+        speed_value_right: $('#speed_value_right').val(),
+        attack_rank_right: $('#attack_rank_right').val(),
+        defence_rank_right: $('#defence_rank_right').val(),
+        sp_atk_rank_right: $('#sp_atk_rank_right').val(),
+        sp_def_rank_right: $('#sp_def_rank_right').val(),
+        speed_rank_right: $('#speed_rank_right').val(),
+        accuracy_rank_right: $('#accuracy_rank_right').val(),
+        evasion_rank_right: $('#evasion_rank_right').val(),
+        critical_rank_right: $('#critical_rank_right').val(),
+        level_right: $('#level_right').val(),
+      }
+      })
+      .done(function(event) {
+        $('.result').html(event);
+      })
+    .fail(function() {
+      alert("エラーが発生しました")
+    })
+  }
+  $('.body').on('change', function() {
+    damage_result();
+  })
 
-// 文字入力もしくはフォームをクリックで検索結果が表示される
+
+  // 文字入力もしくはフォームをクリックで検索結果が表示される
   $('#search_left').on('keyup click', function(){
     var input = $('#search_left').val();
     search_ajax(input, "#search_list_left", "left");
@@ -252,6 +305,7 @@ $(function() {
     $('.select_box_left .select_box__line--selected').addClass("select_box__line").removeClass("select_box__line--selected");
     $(event.target).addClass("select_box__line--selected").removeClass("select_box__line");
     $('.select_box__line').off('mouseenter');
+    damage_result();
   });
   $('.select_box_left').on('click', function() {
     $('.select_box_left').fadeOut();
