@@ -38,16 +38,16 @@
                 
       .pokemon__form
         特性
-        = collection_select :status, :ability, abilities, :id, :name, {}, {id: "abilities_#{side}", class: "pokemon__select--long"}
+        = collection_select :status, :ability, abilities, :name, :name, {}, {id: "ability_#{side}", class: "pokemon__select--long"}
       - if false
         .pokemon__form
           = select_tag :status_ailment, options_for_select([['有効', '1'], ['無効', '0']]), {class: "pokemon__select"}
       .pokemon__form
         道具
-        = collection_select :status, :item, @items, :id, :name, {}, {id: "items_#{side}", class: "pokemon__select--long"}
+        = collection_select :status, :item, @items, :name, :name, {}, {id: "item_#{side}", class: "pokemon__select--long"}
       .pokemon__form
         状態異常
-        = select_tag :status_ailment, options_for_select([['---', ''], ['まひ', '1'], ['やけど', '2']]), {class: "pokemon__select"}
+        = select_tag :status_ailment, options_for_select([['---', ''], ['まひ', '1'], ['やけど', '2']]), {id: "status_ailment_#{side}", class: "pokemon__select"}
 
   = render partial: "rank", locals: {side: side}
 

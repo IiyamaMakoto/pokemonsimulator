@@ -1,48 +1,87 @@
 module CalcHelper
 
-  def power_correction
+  def power_correction(side)
+    correction = 1
+    if side == "left"
+      move, item = @move_left, @item_left
+    elsif side == "right"
+      move, item = @move_right, @item_right
+    else return
+    end
+    correction *= 1.5 if move.category == "物理" && item == "こだわりハチマキ"
+    correction *= 1.5 if move.category == "特殊" && item == "こだわりメガネ"
+    correction *= 1.1 if move.category == "物理" && item == "ちからのハチマキ"
+    correction *= 1.1 if move.category == "特殊" && item == "ものしりメガネ"
+    return correction
+  end
+
+  def hp_correction(side)
     correction = 1
     return correction
   end
 
-  def hp_correction
+  def rank_correction(stts, side)
+    correction = 1
+    if side == "left"
+      rank =
+        case stts
+        when "attack" then @attack_rank_left
+        when "defence" then @defence_rank_left
+        when "sp_atk" then @sp_atk_rank_left
+        when "sp_def" then @sp_def_rank_left
+        when "speed" then @speed_rank_left
+        else 0
+        end
+    elsif side == "right"
+      rank =
+        case stts
+        when "attack" then @attack_rank_right
+        when "defence" then @defence_rank_right
+        when "sp_atk" then @sp_atk_rank_right
+        when "sp_def" then @sp_def_rank_right
+        when "speed" then @speed_rank_right
+        else 0
+        end
+    else
+      rank = 0
+    end
+    correction *= (2+rank)/2.to_f if rank > 0
+    correction *= 2/(2-rank).to_f if rank < 0
+    return correction
+  end
+
+  def attack_correction(side)
     correction = 1
     return correction
   end
 
-  def attack_correction
+  def sp_atk_correction(side)
     correction = 1
     return correction
   end
 
-  def sp_atk_correction
+  def defence_correction(side)
     correction = 1
     return correction
   end
 
-  def defence_correction
+  def sp_def_correction(side)
     correction = 1
     return correction
   end
 
-  def sp_def_correction
+  def speed_correction(side)
     correction = 1
     return correction
   end
 
-  def speed_correction
-    correction = 1
-    return correction
-  end
-
-  def damage_correction
+  def damage_correction(side)
     correction = 1
     return correction
   end
 
   def type_correction(move_type_id, pokemon_type_id)
     correction = 1
-    
     case move_type_id
     when 1
       correction *= 0.5 if [13, 17].include?(pokemon_type_id)

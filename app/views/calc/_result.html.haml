@@ -24,9 +24,9 @@
             ／
             = @hp_right
         .result__ratio
-          = number_to_percentage(100 - 100 * @hp_remain_right_max/@hp_right.to_f, precision: 1)
+          = number_to_percentage(100 * @damage_left_to_right_min/@hp_right.to_f, precision: 1)
           〜
-          = number_to_percentage(100 - 100 * @hp_remain_right/@hp_right.to_f, precision: 1)
+          = number_to_percentage(100 * @damage_left_to_right/@hp_right.to_f, precision: 1)
     .result__down
       .result__left
         .result__hp_wrapper

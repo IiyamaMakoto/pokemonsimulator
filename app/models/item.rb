@@ -10,5 +10,7 @@ class Item < ActiveHash::Base
     {id: 8, name: "半減きのみ"},
     {id: 9, name: "とつげきチョッキ"},
     {id: 10, name: "きあいのタスキ"},
+    {id: 11, name: "ちからのハチマキ"},
+    {id: 12, name: "ものしりメガネ"},
   ]
 end

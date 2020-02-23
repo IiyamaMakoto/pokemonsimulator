@@ -3,6 +3,9 @@ module ApplicationHelper
   def current_status_setting
     @pokemon_left         = Pokemon.find_by(name: params[:pokemon_left].strip)
     @move_left            = Move.find_by(name: params[:move_left])
+    @ability_left         = params[:ability_left]
+    @item_left            = params[:item_left]
+    @status_ailment_left  = params[:status_ailment_left].to_i
     @hp_value_left        = params[:hp_value_left].to_i
     @attack_value_left    = params[:attack_value_left].to_i
     @defence_value_left   = params[:defence_value_left].to_i
@@ -20,6 +23,9 @@ module ApplicationHelper
     @level_left           = params[:level_left].to_i
     @pokemon_right        = Pokemon.find_by(name: params[:pokemon_right].strip)
     @move_right           = Move.find_by(name: params[:move_right])
+    @ability_right        = params[:ability_right].to_i
+    @item_right           = params[:item_right].to_i
+    @status_ailment_right = params[:status_ailment_right].to_i
     @hp_value_right       = params[:hp_value_right].to_i
     @attack_value_right   = params[:attack_value_right].to_i
     @defence_value_right  = params[:defence_value_right].to_i
