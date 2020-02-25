@@ -28,7 +28,8 @@
       .pokemon__form
         性格
         .select_box__base
-          = collection_select :status, :nature, @natures, :id, :name, {}, {id: "nature_#{side}", class: "pokemon__select select_box__base--form"}
+          .pokemon__select.select_box__base--form{id: "nature_#{side}", val: "11"}
+            まじめ
           .select_box__wrapper{class: "select_box_#{side}"}
             .select_box__modal
             .select_box__frame

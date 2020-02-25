@@ -2,7 +2,11 @@
   &__base {
     display: inline-block;
     position: relative;
-    &--form option {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  &--form option {
       display: none;
       position: relative;
     }
@@ -49,6 +53,6 @@
     left: -100vw;
     height: 200vh;
     width: 200vw;
-    opacity: 0;
+    z-index: 2;
   }
 }
