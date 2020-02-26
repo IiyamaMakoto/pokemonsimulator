@@ -24,9 +24,9 @@
             ／
             = @hp_right
         .result__ratio
-          = number_to_percentage(100 * @damage_left_to_right_min/@hp_right.to_f, precision: 1)
+          = number_to_percentage((100 * @damage_left_to_right_min.to_f/@hp_right.to_f).floor(1), precision: 1)
           〜
-          = number_to_percentage(100 * @damage_left_to_right/@hp_right.to_f, precision: 1)
+          = number_to_percentage((100 * @damage_left_to_right.to_f/@hp_right.to_f).floor(1), precision: 1)
     .result__down
       .result__left
         .result__hp_wrapper
@@ -41,9 +41,9 @@
             ／
             = @hp_left
         .result__ratio
-          = number_to_percentage(100 * @damage_right_to_left_min/@hp_left.to_f, precision: 1)
+          = number_to_percentage((100 * @damage_right_to_left_min.to_f/@hp_left.to_f).floor(1), precision: 1)
           〜
-          = number_to_percentage(100 * @damage_right_to_left/@hp_left.to_f, precision: 1)
+          = number_to_percentage((100 * @damage_right_to_left.to_f/@hp_left.to_f).floor(1), precision: 1)
       .result__middle
         ←
       .result__right
