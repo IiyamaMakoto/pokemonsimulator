@@ -12,6 +12,9 @@ module CalcHelper
     correction *= 1.5 if move.category == "特殊" && item == "こだわりメガネ"
     correction *= 1.1 if move.category == "物理" && item == "ちからのハチマキ"
     correction *= 1.1 if move.category == "特殊" && item == "ものしりメガネ"
+    correction *= 1.3 if item == "いのちのたま"
+    correction *= 1.2 if item == "タイプ強化(1.2倍)"
+    correction *= 1.3 if move.type_id == 1 && item == "ノーマルジュエル"
     return correction
   end
 

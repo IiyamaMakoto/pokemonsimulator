@@ -21,6 +21,7 @@ module ApplicationHelper
     @evasion_rank_left    = params[:evasion_rank_left].to_i
     @critical_rank_left   = params[:critical_rank_left].to_i
     @level_left           = params[:level_left].to_i
+    
     @pokemon_right        = Pokemon.find_by(name: params[:pokemon_right].strip)
     @move_right           = Move.find_by(name: params[:move_right])
     @ability_right        = params[:ability_right].to_i
