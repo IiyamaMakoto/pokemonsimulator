@@ -293,10 +293,12 @@ $(function() {
     status_ev_calc("left", "speed");
   });
   $('#nature_left').on('click', function() {
+    var original_nature_id = $("#nature_left").val();
     $('.select_box_left').show();
     $('#nature_left').val();
     $('.select_box__line').on('mouseenter', function() {
       var nature_id = $(event.target).attr("val");
+      $('#nature_left').val(nature_id);
       nature_correction("left", nature_id);
       status_ev_calc("left", "attack");
       status_ev_calc("left", "defence");
@@ -304,27 +306,27 @@ $(function() {
       status_ev_calc("left", "sp_def");
       status_ev_calc("left", "speed");
     });
+    $('.select_box_left .select_box__line').on('click', function() {
+      var nature_name = $(event.target).text();
+      var nature_id = $(event.target).attr("val");
+      $('#nature_left').text(nature_name);
+      $('#nature_left').val(nature_id);
+      $('.select_box_left .select_box__line--selected').addClass("select_box__line").removeClass("select_box__line--selected");
+      $(event.target).addClass("select_box__line--selected").removeClass("select_box__line");
+      $('.select_box__line').off('mouseenter');
+      damage_result();
+    });
+    $('.select_box__modal').on('click', function() {
+      $('.select_box__line').off('mouseenter');
+      $('#nature_left').val(original_nature_id);
+      nature_correction("left", original_nature_id);
+      status_ev_calc("left", "attack");
+      status_ev_calc("left", "defence");
+      status_ev_calc("left", "sp_atk");
+      status_ev_calc("left", "sp_def");
+      status_ev_calc("left", "speed");
+    })
   });
-  $('.select_box_left .select_box__line').on('click', function() {
-    var nature_name = $(event.target).text();
-    var nature_id = $(event.target).attr("val");
-    $('#nature_left').text(nature_name);
-    $('#nature_left').val(nature_id);
-    $('.select_box_left .select_box__line--selected').addClass("select_box__line").removeClass("select_box__line--selected");
-    $(event.target).addClass("select_box__line--selected").removeClass("select_box__line");
-    $('.select_box__line').off('mouseenter');
-    damage_result();
-  });
-  $('.select_box__modal').on('click', function() {
-    $('.select_box__line').off('mouseenter');
-    var nature_id = $("#nature_left").val();
-    nature_correction("left", nature_id);
-    status_ev_calc("left", "attack");
-    status_ev_calc("left", "defence");
-    status_ev_calc("left", "sp_atk");
-    status_ev_calc("left", "sp_def");
-    status_ev_calc("left", "speed");
-  })
   $('.select_box_left').on('click', function() {
     $('.select_box_left').fadeOut();
   });
