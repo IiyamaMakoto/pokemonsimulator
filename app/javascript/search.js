@@ -194,6 +194,16 @@ $(function() {
         evasion_rank_right: $('#evasion_rank_right').val(),
         critical_rank_right: $('#critical_rank_right').val(),
         level_right: $('#level_right').val(),
+        weather: $('#weather').val(),
+        field: $('#field').val(),
+        trick_room: $('#trick_room'). val(),
+        wall_physical_left: $('#wall_physical_left'). val(),
+        wall_physical_right: $('#wall_physical_right'). val(),
+        wall_special_left: $('#wall_special_left'). val(),
+        wall_special_right: $('#wall_special_right'). val(),
+        war_shot_left: $('#war_shot_left'). val(),
+        war_shot_right: $('#war_shot_right'). val(),
+
       }
       })
       .done(function(event) {

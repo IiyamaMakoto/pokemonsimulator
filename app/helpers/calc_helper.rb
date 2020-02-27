@@ -70,6 +70,9 @@ module CalcHelper
 
   def sp_def_correction(side)
     correction = 1
+    pokemon = @pokemon_right if side == "left"
+    pokemon = @pokemon_left if side == "right"
+    correction *= 1.5 if pokemon.type_id == 13 && @weather == 3
     return correction
   end
 
@@ -150,4 +153,14 @@ module CalcHelper
     end
     return correction
   end
+
+  def weather_correction(move_type_id, weather)
+    correction = 1
+    correction *= 2 if move_type_id == 2 && weather == 1
+    correction *= 0.5 if move_type_id == 2 && weather == 2
+    correction *= 2 if move_type_id == 3 && weather == 2
+    correction *= 0.5 if move_type_id == 3 && weather == 1
+    return correction
+  end
+
 end

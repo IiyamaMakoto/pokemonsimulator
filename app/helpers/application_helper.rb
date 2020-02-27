@@ -42,6 +42,16 @@ module ApplicationHelper
     @evasion_rank_right   = params[:evasion_rank_right].to_i
     @critical_rank_right  = params[:critical_rank_right].to_i
     @level_right          = params[:level_right].to_i
+
+    @weather              = params[:weather].to_i
+    @field                = params[:field].to_i
+    @trick_room           = params[:trick_room].to_i
+    @wall_physical_left   = params[:wall_physical_left].to_i
+    @wall_physical_right  = params[:wall_physical_right].to_i
+    @wall_special_left    = params[:wall_special_left].to_i
+    @wall_special_right   = params[:wall_special_right].to_i
+    @war_shot_left        = params[:war_shot_left].to_i
+    @war_shot_right       = params[:war_shot_right].to_i
   end
 
 end

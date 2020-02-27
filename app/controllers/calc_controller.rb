@@ -2,7 +2,7 @@ class CalcController < ApplicationController
   include ApplicationHelper
   include CalcHelper
   extend ActiveHash::Associations::ActiveRecordExtensions
-  before_action :set_natures, :set_items, :set_weathers, :set_fields, :selectable_setting, except: :search
+  before_action :set_natures, :set_items, :selectable_setting, except: :search
 
   def index
     @pokemon_left = Pokemon.find_by_name "ミミッキュ"
@@ -55,6 +55,7 @@ class CalcController < ApplicationController
     end
     @damage_left_to_right = (((@level_left * 2 / 5 + 2).floor * @power_left * @attack_left / @defence_right).floor / 50 + 2).floor
     @damage_left_to_right = (@damage_left_to_right * damage_correction("left")).floor
+    @damage_left_to_right = (@damage_left_to_right * weather_correction(@move_left.type_id, @weather)).floor
     @damage_left_to_right_min = (@damage_left_to_right * 0.85).floor
     @damage_left_to_right *= 1.5 if @pokemon_left.types.ids.include?(@move_left.type_id)
     @damage_left_to_right_min *= 1.5 if @pokemon_left.types.ids.include?(@move_left.type_id)
@@ -77,6 +78,7 @@ class CalcController < ApplicationController
     end
     @damage_right_to_left = (((@level_right * 2 / 5 + 2).floor * @power_right * @attack_right / @defence_left).floor / 50 + 2).floor
     @damage_right_to_left = (@damage_right_to_left * damage_correction("right")).floor
+    @damage_right_to_left = (@damage_right_to_left * weather_correction(@move_right.type_id, @weather)).floor
     @damage_right_to_left_min = (@damage_right_to_left * 0.85).floor
     @damage_right_to_left *= 1.5 if @pokemon_right.types.ids.include?(@move_right.type_id)
     @damage_right_to_left_min *= 1.5 if @pokemon_right.types.ids.include?(@move_right.type_id)
@@ -118,14 +120,6 @@ class CalcController < ApplicationController
 
   def set_items
     @items = Item.all
-  end
-
-  def set_weathers
-    @weathers = Weather.all
-  end
-
-  def set_fields
-    @fields = Field.all
   end
 
 end
