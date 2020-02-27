@@ -62,6 +62,8 @@ class CalcController < ApplicationController
     @damage_left_to_right = (@damage_left_to_right * type_correction(@move_left.type_id, @pokemon_right.types[1].id)).floor if @pokemon_right.types[1].present?
     @damage_left_to_right_min = (@damage_left_to_right_min * type_correction(@move_left.type_id, @pokemon_right.types[0].id)).floor if @pokemon_right.types[0].present?
     @damage_left_to_right_min = (@damage_left_to_right_min * type_correction(@move_left.type_id, @pokemon_right.types[1].id)).floor if @pokemon_right.types[1].present?
+    @damage_left_to_right = (@damage_left_to_right / 2).floor if @status_ailment_left == 2 && @move_left.category == "物理"
+    @damage_left_to_right_min = (@damage_left_to_right_min / 2).floor if @status_ailment_left == 2 && @move_left.category == "物理"
     @hp_remain_right = @hp_right - @damage_left_to_right
     @hp_remain_right = 0 if @hp_remain_right.negative?
     @hp_remain_right_max = @hp_right - @damage_left_to_right_min
@@ -82,6 +84,8 @@ class CalcController < ApplicationController
     @damage_right_to_left = (@damage_right_to_left * type_correction(@move_right.type_id, @pokemon_left.types[1].id)).floor if @pokemon_left.types[1].present?
     @damage_right_to_left_min = (@damage_right_to_left_min * type_correction(@move_right.type_id, @pokemon_left.types[0].id)).floor if @pokemon_left.types[0].present?
     @damage_right_to_left_min = (@damage_right_to_left_min * type_correction(@move_right.type_id, @pokemon_left.types[1].id)).floor if @pokemon_left.types[1].present?
+    @damage_right_to_left = (@damage_right_to_left / 2).floor if @status_ailment_right == 2 && @move_right.category == "物理"
+    @damage_right_to_left_min = (@damage_right_to_left_min / 2).floor if @status_ailment_right == 2 && @move_right.category == "物理"
     @hp_remain_left = @hp_left - @damage_right_to_left
     @hp_remain_left = 0 if @hp_remain_left.negative?
     @hp_remain_left_max = @hp_left - @damage_right_to_left_min
