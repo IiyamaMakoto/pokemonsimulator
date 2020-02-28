@@ -1106,3 +1106,4 @@ Move.create(name: "シャドークロー", category: "物理", type_id: 14, powe
 Move.create(name: "かげうち", category: "物理", type_id: 14, power: 40, max_power: 90, accuracy: 100, pp: 30, contact: true, priority: 1)
 Move.create(name: "じしん", category: "物理", type_id: 9, power: 100, max_power: 130, accuracy: 100, pp: 10)
 Move.create(name: "アイアンヘッド", category: "物理", type_id: 17, power: 80, max_power: 130, accuracy: 100, pp: 15, contact: true)
+Move.create(name: "シャドーボール", category: "特殊", type_id: 14, power: 80, max_power: 130, accuracy: 100, pp: 15)

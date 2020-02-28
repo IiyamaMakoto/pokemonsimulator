@@ -7,8 +7,10 @@ class Item < ActiveHash::Base
     {id: 5, name: "いのちのたま"},
     {id: 6, name: "タイプ強化(1.2倍)"},
     {id: 7, name: "ノーマルジュエル"},
-    {id: 8, name: "半減きのみ"},
-    {id: 9, name: "とつげきチョッキ"},
-    {id: 10, name: "きあいのタスキ"},
+    # {id: 8, name: "半減きのみ"},
+    # {id: 9, name: "とつげきチョッキ"},
+    # {id: 10, name: "きあいのタスキ"},
+    {id: 11, name: "ちからのハチマキ"},
+    {id: 12, name: "ものしりメガネ"},
   ]
 end

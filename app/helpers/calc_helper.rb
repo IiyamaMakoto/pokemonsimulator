@@ -1,48 +1,103 @@
 module CalcHelper
 
-  def power_correction
+  def power_correction(side)
+    correction = 1
+    if side == "left"
+      move, item = @move_left, @item_left
+    elsif side == "right"
+      move, item = @move_right, @item_right
+    else return
+    end
+    correction *= 1.5 if move.category == "物理" && item == "こだわりハチマキ"
+    correction *= 1.5 if move.category == "特殊" && item == "こだわりメガネ"
+    correction *= 1.1 if move.category == "物理" && item == "ちからのハチマキ"
+    correction *= 1.1 if move.category == "特殊" && item == "ものしりメガネ"
+    correction *= 1.3 if item == "いのちのたま"
+    correction *= 1.2 if item == "タイプ強化(1.2倍)"
+    correction *= 1.3 if move.type_id == 1 && item == "ノーマルジュエル"
+    return correction
+  end
+
+  def hp_correction(side)
     correction = 1
     return correction
   end
 
-  def hp_correction
+  def rank_correction(stts, side)
+    correction = 1
+    if side == "left"
+      rank =
+        case stts
+        when "attack" then @attack_rank_left
+        when "defence" then @defence_rank_left
+        when "sp_atk" then @sp_atk_rank_left
+        when "sp_def" then @sp_def_rank_left
+        when "speed" then @speed_rank_left
+        else 0
+        end
+    elsif side == "right"
+      rank =
+        case stts
+        when "attack" then @attack_rank_right
+        when "defence" then @defence_rank_right
+        when "sp_atk" then @sp_atk_rank_right
+        when "sp_def" then @sp_def_rank_right
+        when "speed" then @speed_rank_right
+        else 0
+        end
+    else
+      rank = 0
+    end
+    correction *= (2+rank)/2.to_f if rank > 0
+    correction *= 2/(2-rank).to_f if rank < 0
+    return correction
+  end
+
+  def attack_correction(side)
     correction = 1
     return correction
   end
 
-  def attack_correction
+  def sp_atk_correction(side)
     correction = 1
     return correction
   end
 
-  def sp_atk_correction
+  def defence_correction(side)
     correction = 1
     return correction
   end
 
-  def defence_correction
+  def sp_def_correction(side)
+    correction = 1
+    pokemon = @pokemon_right if side == "left"
+    pokemon = @pokemon_left if side == "right"
+    correction *= 1.5 if pokemon.type_id == 13 && @weather == 3
+    return correction
+  end
+
+  def speed_correction(side)
     correction = 1
     return correction
   end
 
-  def sp_def_correction
+  def damage_correction(side)
     correction = 1
-    return correction
-  end
-
-  def speed_correction
-    correction = 1
-    return correction
-  end
-
-  def damage_correction
-    correction = 1
+    if side == "left"
+      move = @move_left
+      wall = @wall_physical_right if move.category == "物理"
+      wall = @wall_special_right if move.category == "特殊"
+    elsif side == "right"
+      move = @move_right
+      wall = @wall_physical_left if move.category == "物理"
+      wall = @wall_special_left if move.category == "特殊"
+    end
+    correction /= 2.0 if wall == 1
     return correction
   end
 
   def type_correction(move_type_id, pokemon_type_id)
     correction = 1
-    
     case move_type_id
     when 1
       correction *= 0.5 if [13, 17].include?(pokemon_type_id)
@@ -108,4 +163,14 @@ module CalcHelper
     end
     return correction
   end
+
+  def weather_correction(move_type_id, weather)
+    correction = 1
+    correction *= 2 if move_type_id == 2 && weather == 1
+    correction *= 0.5 if move_type_id == 2 && weather == 2
+    correction *= 2 if move_type_id == 3 && weather == 2
+    correction *= 0.5 if move_type_id == 3 && weather == 1
+    return correction
+  end
+
 end

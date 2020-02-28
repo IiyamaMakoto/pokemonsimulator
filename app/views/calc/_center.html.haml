@@ -2,17 +2,17 @@
   .center__label
     天候
   .center__select
-    = collection_select :status, :weather, @weathers, :id, :name, {prompt: "---"}, {class: "pokemon__select--middle"}
+    = select_tag :weather, options_for_select([['---', '0'], ['にほんばれ', '1'], ['あめ', '2'], ['すなあらし', '3'], ['あられ', '4']]), {class: "pokemon__select--middle"}
 .center__block
   .center__label
     フィールド
   .center__select
-    = collection_select :status, :field, @fields, :id, :name, {prompt: "---"}, {class: "pokemon__select--middle"}
-.center__block
-  .center__label
-    じゅうりょく
-  .center__select
-    = select_tag :gravity, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--middle"}
+    = select_tag :field, options_for_select([['---', '0'], ['エレキフィールド', '1'], ['グラスフィールド', '2'], ['サイコフィールド', '3'], ['ミストフィールド', '4']]), {class: "pokemon__select--middle"}
+-# .center__block
+-#   .center__label
+-#     じゅうりょく
+-#   .center__select
+-#     = select_tag :gravity, options_for_select([['---', '0'], ['有効', '1']]), {class: "pokemon__select--middle"}
 .center__block
   .center__label
     トリックルーム

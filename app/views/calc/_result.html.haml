@@ -2,8 +2,8 @@
   - if true
     .result__up
       .result__left
-        .result__speed_left--large
-          先攻
+        -# .result__speed_left--large
+        -#   先攻
         .result__damage
           与ダメージ
           = @damage_left_to_right_min
@@ -24,9 +24,12 @@
             ／
             = @hp_right
         .result__ratio
-          = number_to_percentage(100 - 100 * @hp_remain_right_max/@hp_right.to_f, precision: 1)
+          = number_to_percentage((100 * @damage_left_to_right_min.to_f/@hp_right.to_f).floor(1), precision: 1)
           〜
-          = number_to_percentage(100 - 100 * @hp_remain_right/@hp_right.to_f, precision: 1)
+          = number_to_percentage((100 * @damage_left_to_right.to_f/@hp_right.to_f).floor(1), precision: 1)
+
+    .result__border
+
     .result__down
       .result__left
         .result__hp_wrapper
@@ -41,14 +44,14 @@
             ／
             = @hp_left
         .result__ratio
-          = number_to_percentage(100 - 100 * @hp_remain_left_max/@hp_left.to_f, precision: 1)
+          = number_to_percentage((100 * @damage_right_to_left_min.to_f/@hp_left.to_f).floor(1), precision: 1)
           〜
-          = number_to_percentage(100 - 100 * @hp_remain_left/@hp_left.to_f, precision: 1)
+          = number_to_percentage((100 * @damage_right_to_left.to_f/@hp_left.to_f).floor(1), precision: 1)
       .result__middle
         ←
       .result__right
-        .result__speed_right
-          後攻
+        -# .result__speed_right
+        -#   後攻
         .result__damage--right
           与ダメージ
           = @damage_right_to_left_min

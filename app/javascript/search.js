@@ -156,6 +156,9 @@ $(function() {
       data: {
         pokemon_left: $('#name_left').text(),
         move_left: $('#move1_left').val(),
+        ability_left: $('#ability_left').val(),
+        item_left: $('#item_left').val(),
+        status_ailment_left: $('#status_ailment_left').val(),
         hp_value_left: $('#hp_value_left').val(),
         attack_value_left: $('#attack_value_left').val(),
         defence_value_left: $('#defence_value_left').val(),
@@ -173,6 +176,9 @@ $(function() {
         level_left: $('#level_left').val(),
         pokemon_right: $('#name_right').text(),
         move_right: $('#move1_right').val(),
+        ability_right: $('#ability_right').val(),
+        item_right: $('#item_right').val(),
+        status_ailment_right: $('#status_ailment_right').val(),
         hp_value_right: $('#hp_value_right').val(),
         attack_value_right: $('#attack_value_right').val(),
         defence_value_right: $('#defence_value_right').val(),
@@ -188,6 +194,16 @@ $(function() {
         evasion_rank_right: $('#evasion_rank_right').val(),
         critical_rank_right: $('#critical_rank_right').val(),
         level_right: $('#level_right').val(),
+        weather: $('#weather').val(),
+        field: $('#field').val(),
+        trick_room: $('#trick_room'). val(),
+        wall_physical_left: $('#wall_physical_left'). val(),
+        wall_physical_right: $('#wall_physical_right'). val(),
+        wall_special_left: $('#wall_special_left'). val(),
+        wall_special_right: $('#wall_special_right'). val(),
+        war_shot_left: $('#war_shot_left'). val(),
+        war_shot_right: $('#war_shot_right'). val(),
+
       }
       })
       .done(function(event) {
@@ -287,25 +303,39 @@ $(function() {
     status_ev_calc("left", "speed");
   });
   $('#nature_left').on('click', function() {
+    var original_nature_id = $("#nature_left").val();
     $('.select_box_left').show();
-      $('.select_box__line').on('mouseenter', function() {
-        var nature_id = $(event.target).attr("val");
-        $('#nature_left').val(nature_id);
-        nature_correction("left", nature_id);
-        status_ev_calc("left", "attack");
-        status_ev_calc("left", "defence");
-        status_ev_calc("left", "sp_atk");
-        status_ev_calc("left", "sp_def");
-        status_ev_calc("left", "speed");
-      });
+    $('#nature_left').val();
+    $('.select_box__line').on('mouseenter', function() {
+      var nature_id = $(event.target).attr("val");
+      $('#nature_left').val(nature_id);
+      nature_correction("left", nature_id);
+      status_ev_calc("left", "attack");
+      status_ev_calc("left", "defence");
+      status_ev_calc("left", "sp_atk");
+      status_ev_calc("left", "sp_def");
+      status_ev_calc("left", "speed");
     });
-  $('.select_box_left .select_box__line').on('click', function() {
-    var nature_id = $(event.target).attr("val");
-    $('#nature_left').val(nature_id);
-    $('.select_box_left .select_box__line--selected').addClass("select_box__line").removeClass("select_box__line--selected");
-    $(event.target).addClass("select_box__line--selected").removeClass("select_box__line");
-    $('.select_box__line').off('mouseenter');
-    damage_result();
+    $('.select_box_left .select_box__line').on('click', function() {
+      var nature_name = $(event.target).text();
+      var nature_id = $(event.target).attr("val");
+      $('#nature_left').text(nature_name);
+      $('#nature_left').val(nature_id);
+      $('.select_box_left .select_box__line--selected').addClass("select_box__line").removeClass("select_box__line--selected");
+      $(event.target).addClass("select_box__line--selected").removeClass("select_box__line");
+      $('.select_box__line').off('mouseenter');
+      damage_result();
+    });
+    $('.select_box__modal').on('click', function() {
+      $('.select_box__line').off('mouseenter');
+      $('#nature_left').val(original_nature_id);
+      nature_correction("left", original_nature_id);
+      status_ev_calc("left", "attack");
+      status_ev_calc("left", "defence");
+      status_ev_calc("left", "sp_atk");
+      status_ev_calc("left", "sp_def");
+      status_ev_calc("left", "speed");
+    })
   });
   $('.select_box_left').on('click', function() {
     $('.select_box_left').fadeOut();
@@ -373,24 +403,39 @@ $(function() {
     status_ev_calc("right", "speed");
   });
   $('#nature_right').on('click', function() {
+    var original_nature_id = $("#nature_right").val();
     $('.select_box_right').show();
-      $('.select_box__line').on('mouseenter', function() {
-        var nature_id = $(event.target).attr("val");
-        $('#nature_right').val(nature_id);
-        nature_correction("right", nature_id);
-        status_ev_calc("right", "attack");
-        status_ev_calc("right", "defence");
-        status_ev_calc("right", "sp_atk");
-        status_ev_calc("right", "sp_def");
-        status_ev_calc("right", "speed");
-      });
+    $('#nature_right').val();
+    $('.select_box__line').on('mouseenter', function() {
+      var nature_id = $(event.target).attr("val");
+      $('#nature_right').val(nature_id);
+      nature_correction("right", nature_id);
+      status_ev_calc("right", "attack");
+      status_ev_calc("right", "defence");
+      status_ev_calc("right", "sp_atk");
+      status_ev_calc("right", "sp_def");
+      status_ev_calc("right", "speed");
     });
-  $('.select_box_right .select_box__line').on('click', function() {
-    var nature_id = $(event.target).attr("val");
-    $('#nature_right').val(nature_id);
-    $('.select_box_right .select_box__line--selected').addClass("select_box__line").removeClass("select_box__line--selected");
-    $(event.target).addClass("select_box__line--selected").removeClass("select_box__line");
-    $('.select_box__line').off('mouseenter');
+    $('.select_box_right .select_box__line').on('click', function() {
+      var nature_name = $(event.target).text();
+      var nature_id = $(event.target).attr("val");
+      $('#nature_right').text(nature_name);
+      $('#nature_right').val(nature_id);
+      $('.select_box_right .select_box__line--selected').addClass("select_box__line").removeClass("select_box__line--selected");
+      $(event.target).addClass("select_box__line--selected").removeClass("select_box__line");
+      $('.select_box__line').off('mouseenter');
+      damage_result();
+    });
+    $('.select_box__modal').on('click', function() {
+      $('.select_box__line').off('mouseenter');
+      $('#nature_right').val(original_nature_id);
+      nature_correction("right", original_nature_id);
+      status_ev_calc("right", "attack");
+      status_ev_calc("right", "defence");
+      status_ev_calc("right", "sp_atk");
+      status_ev_calc("right", "sp_def");
+      status_ev_calc("right", "speed");
+    })
   });
   $('.select_box_right').on('click', function() {
     $('.select_box_right').fadeOut();

@@ -121,4 +121,12 @@
       float: left;
     }
   }
+
+  &__border {
+    height: 1px;
+    width: 100%;
+    margin: 10px auto;
+    background-color: gray;
+    border: 1px solid gray;
+  }
 }
