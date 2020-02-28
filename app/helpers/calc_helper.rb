@@ -83,6 +83,16 @@ module CalcHelper
 
   def damage_correction(side)
     correction = 1
+    if side == "left"
+      move = @move_left
+      wall = @wall_physical_right if move.category == "物理"
+      wall = @wall_special_right if move.category == "特殊"
+    elsif side == "right"
+      move = @move_right
+      wall = @wall_physical_left if move.category == "物理"
+      wall = @wall_special_left if move.category == "特殊"
+    end
+    correction /= 2.0 if wall == 1
     return correction
   end
 
