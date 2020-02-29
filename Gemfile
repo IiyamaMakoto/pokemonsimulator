@@ -37,6 +37,10 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'forgery_ja'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
 end
 
 group :development do
