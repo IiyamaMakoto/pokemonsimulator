@@ -56,7 +56,7 @@ group :test do
   gem 'webdrivers'
 end
 
-group :production, :staging do
+group :production do
   gem 'unicorn', '5.4.1'
 end
 
@@ -66,10 +66,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'active_hash', '~> 2.3.0'
-
-group :development, :test do
- gem 'capistrano'
- gem 'capistrano-bundler'
- gem 'capistrano-rails'
- gem 'capistrano-rbenv'
-end
