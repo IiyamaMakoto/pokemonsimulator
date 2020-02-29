@@ -48,7 +48,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
   database: pokemonsimulator_production
-  username: pokemonsimulator
-  password: <%= ENV['POKEMONSIMULATOR_DATABASE_PASSWORD'] %>
+  username: root
+  password: Rails.application.credentials.mysql_password
+  socket: /var/lib/mysql.sock
