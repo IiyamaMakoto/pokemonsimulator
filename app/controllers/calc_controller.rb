@@ -21,6 +21,8 @@ class CalcController < ApplicationController
     @damage_left_to_right_min = 0
     @damage_right_to_left = 0
     @damage_right_to_left_min = 0
+    @moves = Move.all.order(:name)
+    @move = Move.first
   end
 
   def search

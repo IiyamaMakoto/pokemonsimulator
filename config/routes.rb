@@ -7,4 +7,10 @@ Rails.application.routes.draw do
       get :damage
     end
   end
+  resources :move, only: :index do
+    collection do
+      get :search
+      get :result
+    end
+  end
 end

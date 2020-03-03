@@ -52,4 +52,6 @@
 
   = render partial: "rank", locals: {side: side}
 
-  = render partial: "move", locals: {side: side}
+  .moves
+    %div{class: "move1_#{side}"}
+      = render partial: "move", locals: {move: @move, side: side}

@@ -12,6 +12,16 @@
 
       = render partial: "search", locals: {pokemon: @pokemon_right, side: "right", status: @status_right, abilities: @abilities_right}
 
+  .move__modal
+    .move__modal--background
+    .move__modal--menu
+      .modal__title
+        わざ名を検索
+      = text_field_tag "move__search", "", {class: "modal__textarea"}
+      .modal__results
+        = render partial: 'move/move', collection: @moves
+
+
   .result
     = render partial: "result"
 
