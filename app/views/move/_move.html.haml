@@ -1,0 +1,23 @@
+.modal__move{id: "move-#{move.id}", val: "#{move.id}"}
+  .modal__move--name
+    = move.name
+  - if move.type
+    %div{class: "pokemon__type--#{move.type.id} pokemon__type--move"}
+      = move.type.name
+  - if move.category
+    .modal__move--label
+      = move.category
+  - if move.power
+    .modal__move--label
+      威力：
+    .modal__move--value
+      = move.power
+    .modal__move--label
+      ダイマックス時威力：
+    .modal__move--value
+      = move.max_power
+  - if move.accuracy
+    .modal__move--label
+      命中率：
+    .modal__move--value
+      = move.accuracy

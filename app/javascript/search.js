@@ -1,6 +1,48 @@
 $(function() {
   damage_result();
-// インクリメンタルサーチを実行する部分を定義
+
+  // わざ選択のモーダル部分
+  function move_ajax() {
+    var input = $('#move__search').val();
+    $.ajax({
+      type: "GET",
+      url: "move/search",
+      data: {keyword: input},
+    })
+    .fail(function() {
+      alert("わざの検索時にエラーが発生しました");
+    });
+  }
+  $('.moves').on('click', '.move__text_form', function() {
+    var target_move_id = $(event.target).attr('id');
+    $('#move__search').val("");
+    move_ajax();
+    $('.move__modal').fadeIn(100);
+    $('#move__search').on('keyup', function() {
+      move_ajax()
+    })
+    $('.move__modal').on('click', '.modal__move', function() {
+      var move_id = $(event.target).closest('.modal__move').attr('val');
+      $.ajax({
+        type: "GET",
+        url: "move/result",
+        data: {move_id: move_id, target_move: target_move_id},
+      })
+      .done(function() {
+      damage_result();
+      })
+      .fail(function() {
+        alert("わざの決定時にエラーが発生しました");
+      });
+      $('.move__modal').off('click');
+      $('.move__modal').fadeOut(100);
+    });
+    $('.move__modal--background').on('click', function() {
+      $('.move__modal').fadeOut(100);
+    });
+  })
+
+  // インクリメンタルサーチを実行する部分を定義
   function search_ajax(input, target, side) {
     $.ajax({
       type: "GET",
@@ -148,14 +190,13 @@ $(function() {
     $('tr[val=status_'+up_status_id+'_'+side+']').addClass("table__correction--up");
     $('tr[val=status_'+down_status_id+'_'+side+']').addClass("table__correction--down");
   };
-
   function damage_result() {
     $.ajax({
       type: "GET",
       url: "/calc/damage",
       data: {
         pokemon_left: $('#name_left').text(),
-        move_left: $('#move1_left').val(),
+        move_left: $('#move1_left').text(),
         ability_left: $('#ability_left').val(),
         item_left: $('#item_left').val(),
         status_ailment_left: $('#status_ailment_left').val(),
@@ -175,7 +216,7 @@ $(function() {
         critical_rank_left: $('#critical_rank_left').val(),
         level_left: $('#level_left').val(),
         pokemon_right: $('#name_right').text(),
-        move_right: $('#move1_right').val(),
+        move_right: $('#move1_right').text(),
         ability_right: $('#ability_right').val(),
         item_right: $('#item_right').val(),
         status_ailment_right: $('#status_ailment_right').val(),
