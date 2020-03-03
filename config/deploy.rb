@@ -29,3 +29,4 @@ namespace :deploy do
 end
 
 set :linked_files, fetch(:linked_files, []).push("config/master.key")
+append :linked_files, 'config/credentials/production.key'
