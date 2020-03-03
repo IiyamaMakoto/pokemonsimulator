@@ -25,3 +25,5 @@ namespace :deploy do
     invoke 'unicorn:start'      # 環境変数の修正が反映される、更新中はサービスが停止する
   end
 end
+
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
