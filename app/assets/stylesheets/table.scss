@@ -5,7 +5,7 @@
   float: left;
   border-collapse: collapse;
   th, td {
-    border: solid 1px $bg-left;
+    // border: solid 1px $bg-left;
     padding: 2px;
     position: relative;
   }
@@ -15,7 +15,7 @@
 th {
     color: white;
     font-size: 12px;
-    background-color: $bg-left;
+    // background-color: $bg-left;
     text-align: center;
   }
   &__label {
@@ -48,12 +48,12 @@ th {
       opacity: 1;
     }
   }
-  &__correction--up {
-    background-color: $status-up;
-    input {background-color: $status-up;}
-  }
-  &__correction--down {
-    background-color: $status-down;
-    input {background-color: $status-down;}
-  }
+  // &__correction--up {
+  //   background-color: $status-up;
+  //   input {background-color: $status-up;}
+  // }
+  // &__correction--down {
+  //   background-color: $status-down;
+  //   input {background-color: $status-down;}
+  // }
 }

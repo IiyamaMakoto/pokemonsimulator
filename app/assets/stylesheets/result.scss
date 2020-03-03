@@ -1,6 +1,6 @@
 .result {
   &__wrapper {
-    @include clearfix;
+    // @include clearfix;
     min-height: 300px;
     width: 1000px;
     margin: 0 auto;
@@ -9,12 +9,12 @@
   &__up {
     height: 50px;
     margin: 0 auto;
-    @include clearfix;
+    // @include clearfix;
   }
   &__down {
     height: 50px;
     margin: 0 auto;
-    @include clearfix;
+    // @include clearfix;
   }
   &__left {
     width: 420px;
@@ -96,7 +96,7 @@
   }
   &__hp_wrapper {
     width: 100%;
-    @include clearfix;
+    // @include clearfix;
   }
   &__hp_value {
     width: 160px;
@@ -117,7 +117,7 @@
     line-height: 50px;
     margin: 0 30px;
     &--right {
-      @extend .result__damage;
+      // @extend .result__damage;
       float: left;
     }
   }
