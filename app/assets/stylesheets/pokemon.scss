@@ -7,7 +7,7 @@
     width: 100%;
     height: 40px;
     margin: 0 5px;
-    // @include clearfix;
+    @include clearfix;
   }
   &__search_box {
     float: left;
@@ -37,8 +37,8 @@
     display: block;
     padding-left: 3px;
     text-decoration: none;
-    // &_left {@extend .pokemon__result};
-    // &_right {@extend .pokemon__result};
+    &_left {@extend .pokemon__result};
+    &_right {@extend .pokemon__result};
   }
   &__name {
     float: left;
@@ -58,7 +58,7 @@
     width: 42px;
     height: 30px;
     margin: 5px;
-    // @include clearfix;
+    @include clearfix;
   }
   &__type {
     width: 42px;
@@ -71,93 +71,93 @@
       display: inline-block;
     }
     &--1 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       letter-spacing: 0em;
       color: black;
       background-color: #a8a090;
     }
     &--2 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #f05030;
     }
     &--3 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #3898f8;
     }
     &--4 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #f8c030;
     }
     &--5 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #78c850;
     }
     &--6 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #58c8e0;
     }
     &--7 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: white;
       background-color: #a05038;
     }
     &--8 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: white;
       background-color: #b058a0;
     }
     &--9 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #d0b058;
     }
     &--10 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #98a8f0;
     }
     &--11 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #f870a0;
     }
     &--12 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #a8b820;
     }
     &--13 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #b8a058;
     }
     &--14 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: white;
       background-color: #6060b0;
     }
     &--15 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: white;
       background-color: #7860e0;
     }
     &--16 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: white;
       background-color: #705848;
     }
     &--17 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       background-color: #a8a8c0;
     }
     &--18 {
-      // @extend .pokemon__type;
+      @extend .pokemon__type;
       color: black;
       letter-spacing: -0.2em;
       background-color: #f8b0d0;
@@ -174,7 +174,7 @@
     padding-right: 5px;
   }
   &__middle {
-    // @include clearfix;
+    @include clearfix;
     &--left {
       float: left;
     }
@@ -202,15 +202,15 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     &--long {
-      // @extend .pokemon__select;
+      @extend .pokemon__select;
       width: 135px;
     }
     &--short {
-      // @extend .pokemon__select;
+      @extend .pokemon__select;
       width: 45px;
     }
     &--middle {
-      // @extend .pokemon__select;
+      @extend .pokemon__select;
       width: 100%;
     }
   }
