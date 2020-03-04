@@ -21,18 +21,6 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
-before "deploy:assets:precompile", "deploy:yarn_install"
-namespace :deploy do
-  desc "Run rake yarn install"
-  task :yarn_install do
-    on roles(:web) do
-      within release_path do
-        execute("cd #{release_path} && yarn install --silent --no-progress --no-audit --no-optional")
-      end
-    end
-  end
-end
-
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
@@ -43,4 +31,3 @@ namespace :deploy do
 end
 
 set :linked_files, fetch(:linked_files, []).push("config/master.key")
-append :linked_files, 'config/credentials/production.key'
