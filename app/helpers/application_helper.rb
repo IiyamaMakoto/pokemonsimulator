@@ -50,8 +50,8 @@ module ApplicationHelper
     @wall_physical_right  = params[:wall_physical_right].to_i
     @wall_special_left    = params[:wall_special_left].to_i
     @wall_special_right   = params[:wall_special_right].to_i
-    @war_shot_left        = params[:war_shot_left].to_i
-    @war_shot_right       = params[:war_shot_right].to_i
+    @tar_shot_left        = params[:tar_shot_left].to_i
+    @tar_shot_right       = params[:tar_shot_right].to_i
   end
 
 end
