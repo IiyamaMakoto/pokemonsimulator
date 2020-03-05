@@ -1,5 +1,5 @@
 .result__wrapper
-  - if @speed_left > @speed_right
+  - if ( @speed_left > @speed_right && @trick_room == 0 ) || ( @speed_left < @speed_right && @trick_room == 1 )
     .result__up
       .result__left
         .result__speed_left--large
@@ -58,7 +58,7 @@
           〜
           = @damage_right_to_left
 
-  - elsif @speed_left < @speed_right
+  - elsif ( @speed_left < @speed_right && @trick_room == 0 ) || ( @speed_left > @speed_right && @trick_room == 1 )
     .result__up
       .result__left
         .result__hp_wrapper
