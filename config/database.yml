@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: pokemonsimulator_production
-  username: pokemonsimulator
-  password: <%= ENV['POKEMONSIMULATOR_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= Rails.application.credentials.database_password %>
