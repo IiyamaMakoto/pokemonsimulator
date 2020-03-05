@@ -336,6 +336,13 @@ $(function() {
   $('.left').on('change', '#speed_value_left', function() {
     status_value_calc("left", "speed");
   });
+  $('.left').on('change', '#level_left', function() {
+    status_ev_calc("left", "attack");
+    status_ev_calc("left", "defence");
+    status_ev_calc("left", "sp_atk");
+    status_ev_calc("left", "sp_def");
+    status_ev_calc("left", "speed");
+  });
   $('.left').on('change', '#nature_left', function() {
     status_ev_calc("left", "attack");
     status_ev_calc("left", "defence");
@@ -435,6 +442,13 @@ $(function() {
   });
   $('.right').on('change', '#speed_value_right', function() {
     status_value_calc("right", "speed");
+  });
+  $('.right').on('change', '#level_right', function() {
+    status_ev_calc("right", "attack");
+    status_ev_calc("right", "defence");
+    status_ev_calc("right", "sp_atk");
+    status_ev_calc("right", "sp_def");
+    status_ev_calc("right", "speed");
   });
   $('.right').on('change', '#nature_right', function() {
     status_ev_calc("right", "attack");
