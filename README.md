@@ -1,4 +1,4 @@
-#　ポケモン対戦シミュレーター
+# ポケモン対戦シミュレーター
 
 ポケットモンスター（ポケモン）の対戦におけるダメージ計算とすばやさ判定を行うアプリです。
 ダメージを確認しながら努力値調整やわざ・持ち物を選んだり、対戦中に相手からの攻撃ダメージを推測することができます。
@@ -44,13 +44,13 @@
 
 ## 開発環境
 
-Ruby 2.5.1p57
-Ruby on Rails 5.2.4.1
-javascript (jQuery)
-MySQL
-Unicorn 5.4.1
-Nginx
-Capistrano 3.12.0
-Github
-AWS
-Visual Studio Code
+- Ruby 2.5.1p57
+- Ruby on Rails 5.2.4.1
+- javascript (jQuery)
+- MySQL
+- Unicorn 5.4.1
+- Nginx
+- Capistrano 3.12.0
+- Github
+- AWS
+- Visual Studio Code
