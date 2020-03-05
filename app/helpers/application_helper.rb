@@ -24,8 +24,8 @@ module ApplicationHelper
     
     @pokemon_right        = Pokemon.find_by(name: params[:pokemon_right].strip)
     @move_right           = Move.find_by(name: params[:move_right])
-    @ability_right        = params[:ability_right].to_i
-    @item_right           = params[:item_right].to_i
+    @ability_right        = params[:ability_right]
+    @item_right           = params[:item_right]
     @status_ailment_right = params[:status_ailment_right].to_i
     @hp_value_right       = params[:hp_value_right].to_i
     @attack_value_right   = params[:attack_value_right].to_i
@@ -50,8 +50,8 @@ module ApplicationHelper
     @wall_physical_right  = params[:wall_physical_right].to_i
     @wall_special_left    = params[:wall_special_left].to_i
     @wall_special_right   = params[:wall_special_right].to_i
-    @war_shot_left        = params[:war_shot_left].to_i
-    @war_shot_right       = params[:war_shot_right].to_i
+    @tar_shot_left        = params[:tar_shot_left].to_i
+    @tar_shot_right       = params[:tar_shot_right].to_i
   end
 
 end

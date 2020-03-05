@@ -1,9 +1,9 @@
 .result__wrapper
-  - if true
+  - if ( @speed_left > @speed_right && @trick_room == 0 ) || ( @speed_left < @speed_right && @trick_room == 1 )
     .result__up
       .result__left
-        -# .result__speed_left--large
-        -#   先攻
+        .result__speed_left--large
+          先攻
         .result__damage
           与ダメージ
           = @damage_left_to_right_min
@@ -50,21 +50,128 @@
       .result__middle
         ←
       .result__right
-        -# .result__speed_right
-        -#   後攻
+        .result__speed_right
+          後攻
         .result__damage--right
           与ダメージ
           = @damage_right_to_left_min
           〜
           = @damage_right_to_left
 
-  - elsif true
-    .result__speed_left
-      後攻
-    .result__speed_right--large
-      先攻
-  - elsif true
-    .result__speed_left
-      同速
-    .result__speed_right
-      同速
+  - elsif ( @speed_left < @speed_right && @trick_room == 0 ) || ( @speed_left > @speed_right && @trick_room == 1 )
+    .result__up
+      .result__left
+        .result__hp_wrapper
+          .result__hp_bar--background
+          .result__hp_bar--swing{ style: "width: #{240 * @hp_remain_left_max / @hp_left}px;" }
+          .result__hp_bar{ style: "width: #{240 * @hp_remain_left / @hp_left}px;" }
+          .result__hp_bar--spacer
+          .result__hp_value
+            = @hp_remain_left
+            〜
+            = @hp_remain_left_max
+            ／
+            = @hp_left
+        .result__ratio
+          = number_to_percentage((100 * @damage_right_to_left_min.to_f/@hp_left.to_f).floor(1), precision: 1)
+          〜
+          = number_to_percentage((100 * @damage_right_to_left.to_f/@hp_left.to_f).floor(1), precision: 1)
+      .result__middle
+        ←
+      .result__right
+        .result__speed_right--large
+          先攻
+        .result__damage--right
+          与ダメージ
+          = @damage_right_to_left_min
+          〜
+          = @damage_right_to_left
+
+    .result__border
+
+    .result__down
+      .result__left
+        .result__speed_left
+          後攻
+        .result__damage
+          与ダメージ
+          = @damage_left_to_right_min
+          〜
+          = @damage_left_to_right
+      .result__middle
+        →
+      .result__right
+        .result__hp_wrapper
+          .result__hp_bar--background
+          .result__hp_bar--swing{ style: "width: #{240 * @hp_remain_right_max / @hp_right}px;" }
+          .result__hp_bar{ style: "width: #{240 * @hp_remain_right / @hp_right}px;" }
+          .result__hp_bar--spacer
+          .result__hp_value
+            = @hp_remain_right
+            〜
+            = @hp_remain_right_max
+            ／
+            = @hp_right
+        .result__ratio
+          = number_to_percentage((100 * @damage_left_to_right_min.to_f/@hp_right.to_f).floor(1), precision: 1)
+          〜
+          = number_to_percentage((100 * @damage_left_to_right.to_f/@hp_right.to_f).floor(1), precision: 1)
+
+  - elsif @speed_left == @speed_right
+    .result__up
+      .result__left
+        .result__speed_left
+          同速
+        .result__damage
+          与ダメージ
+          = @damage_left_to_right_min
+          〜
+          = @damage_left_to_right
+      .result__middle
+        →
+      .result__right
+        .result__hp_wrapper
+          .result__hp_bar--background
+          .result__hp_bar--swing{ style: "width: #{240 * @hp_remain_right_max / @hp_right}px;" }
+          .result__hp_bar{ style: "width: #{240 * @hp_remain_right / @hp_right}px;" }
+          .result__hp_bar--spacer
+          .result__hp_value
+            = @hp_remain_right
+            〜
+            = @hp_remain_right_max
+            ／
+            = @hp_right
+        .result__ratio
+          = number_to_percentage((100 * @damage_left_to_right_min.to_f/@hp_right.to_f).floor(1), precision: 1)
+          〜
+          = number_to_percentage((100 * @damage_left_to_right.to_f/@hp_right.to_f).floor(1), precision: 1)
+
+    .result__border
+
+    .result__down
+      .result__left
+        .result__hp_wrapper
+          .result__hp_bar--background
+          .result__hp_bar--swing{ style: "width: #{240 * @hp_remain_left_max / @hp_left}px;" }
+          .result__hp_bar{ style: "width: #{240 * @hp_remain_left / @hp_left}px;" }
+          .result__hp_bar--spacer
+          .result__hp_value
+            = @hp_remain_left
+            〜
+            = @hp_remain_left_max
+            ／
+            = @hp_left
+        .result__ratio
+          = number_to_percentage((100 * @damage_right_to_left_min.to_f/@hp_left.to_f).floor(1), precision: 1)
+          〜
+          = number_to_percentage((100 * @damage_right_to_left.to_f/@hp_left.to_f).floor(1), precision: 1)
+      .result__middle
+        ←
+      .result__right
+        .result__speed_right
+          同速
+        .result__damage--right
+          与ダメージ
+          = @damage_right_to_left_min
+          〜
+          = @damage_right_to_left

@@ -78,6 +78,15 @@ module CalcHelper
 
   def speed_correction(side)
     correction = 1
+    if side == "left"
+      correction *= 1.5 if @item_left == "こだわりスカーフ"
+      correction *= 2.0 if @ability_left == "すなかき" && @weather == 3
+      correction *= 0.5 if @status_ailment_left == 1
+    elsif side == "right"
+      correction *= 1.5 if @item_right == "こだわりスカーフ"
+      correction *= 2.0 if @ability_right == "すなかき" && @weather == 3
+      correction *= 0.5 if @status_ailment_right == 1
+    end
     return correction
   end
 
