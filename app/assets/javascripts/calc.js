@@ -379,7 +379,7 @@ $(function() {
     })
   });
   $('.select_box_left').on('click', function() {
-    $('.select_box_left').fadeOut();
+    $('.select_box_left').fadeOut(200);
   });
 
   $('.right').on('change', '#hp_iv_right', function() {
@@ -479,6 +479,6 @@ $(function() {
     })
   });
   $('.select_box_right').on('click', function() {
-    $('.select_box_right').fadeOut();
+    $('.select_box_right').fadeOut(200);
   });
 });
