@@ -51,4 +51,6 @@ production:
   <<: *default
   database: pokemonsimulator_production
   username: root
-  password: <%= Rails.application.credentials.database_password %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
+  
