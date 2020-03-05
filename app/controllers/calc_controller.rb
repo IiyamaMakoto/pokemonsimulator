@@ -23,6 +23,8 @@ class CalcController < ApplicationController
     @damage_right_to_left_min = 0
     @moves = Move.all.order(:name)
     @move = Move.first
+    @speed_left = 0
+    @speed_right = 0
   end
 
   def search
@@ -72,6 +74,7 @@ class CalcController < ApplicationController
     @hp_remain_right = 0 if @hp_remain_right.negative?
     @hp_remain_right_max = @hp_right - @damage_left_to_right_min
     @hp_remain_right_max = 0 if @hp_remain_right_max.negative?
+
     if @move_right.category == "物理"
       @attack_right = ((@attack_value_right * rank_correction("attack", "right")).floor * attack_correction("right")).floor
       @defence_left = ((@defence_value_left * rank_correction("defence", "left")).floor * defence_correction("left")).floor
@@ -96,6 +99,10 @@ class CalcController < ApplicationController
     @hp_remain_left = 0 if @hp_remain_left.negative?
     @hp_remain_left_max = @hp_left - @damage_right_to_left_min
     @hp_remain_left_max = 0 if @hp_remain_left_max.negative?
+
+    @speed_left = @speed_value_left * rank_correction("speed", "left") * speed_correction("left")
+    @speed_right = @speed_value_right * rank_correction("speed", "right") * speed_correction("right")
+
     render partial: "result"
   end
 
