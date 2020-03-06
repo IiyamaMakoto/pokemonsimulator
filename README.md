@@ -46,7 +46,9 @@
 
 - Ruby 2.5.1p57
 - Ruby on Rails 5.2.4.1
-- javascript (jQuery)
+- jQuery
+- Haml
+- Sass
 - MySQL
 - Unicorn 5.4.1
 - Nginx
