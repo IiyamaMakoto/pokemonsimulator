@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_094838) do
+ActiveRecord::Schema.define(version: 2020_04_17_022529) do
 
   create_table "abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_094838) do
     t.integer "priority", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "text"
     t.index ["type_id"], name: "index_moves_on_type_id"
   end
 
