@@ -1,15 +1,15 @@
 class MoveController < ApplicationController
 
   def index
-    @moves = Move.all.order(:name)
+    @moves = Move.all.order(:name).limit(10)
   end
 
   def search
     keyword = params[:keyword]
     if keyword == ""
-      @moves = Move.all.order(:name)
+      @moves = Move.all.order(:name).limit(10)
     else
-      @moves = Move.where(['name LIKE ? OR name LIKE ?', "%#{keyword.tr('ァ-ン','ぁ-ん')}%", "%#{keyword.tr('ぁ-ん','ァ-ン')}%"]).order(:name)
+      @moves = Move.where(['name LIKE ? OR name LIKE ?', "%#{keyword.tr('ァ-ン','ぁ-ん')}%", "%#{keyword.tr('ぁ-ん','ァ-ン')}%"]).order(:name).limit(10)
     end
   end
 
